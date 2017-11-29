@@ -1,0 +1,18 @@
+<div class="page-header">
+  <h1>Create Category</h1>
+</div>
+<div class="row">
+  <div class="container">
+    <form name="categoryForm" ng-submit="create(category)" novalidate>
+
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="category.name" class="form-control" ng-model="category.name"/>
+      </div>
+
+      <a href="#categories" class="btn btn-default">Back</a>
+      <button type="submit" class="btn btn-primary">Create</button>
+
+    </form>
+  </div>
+</div>

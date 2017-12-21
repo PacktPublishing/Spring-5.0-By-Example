@@ -15,3 +15,6 @@ queue:
   twitter: twitter-stream
 exchange:
   twitter: twitter-exchange
+
+routing_key:
+  track: track.*

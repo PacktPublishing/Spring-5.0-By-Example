@@ -1,0 +1,27 @@
+spring:
+  profiles: default
+
+twitter:
+  consumer-key: ${consumer-key}
+  consumer-secret: ${consumer-secret}
+spring:
+  redis:
+    host: localhost
+    port: 6379
+server:
+  port: 9090
+
+---
+
+spring:
+  profiles: docker
+
+twitter:
+  consumer-key: ${consumer-key}
+  consumer-secret: ${consumer-secret}
+spring:
+  redis:
+    host: redis
+    port: 6379
+server:
+  port: 9090

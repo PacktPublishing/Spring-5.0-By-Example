@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import springfive.cms.domain.models.News;
 import springfive.cms.domain.models.Review;
-import springfive.cms.domain.service.NewsService;
 import springfive.cms.domain.vo.NewsRequest;
 
 /**
@@ -23,12 +22,6 @@ import springfive.cms.domain.vo.NewsRequest;
 @RestController
 @RequestMapping("/api/news")
 public class NewsResource {
-
-  private final NewsService newsService;
-
-  public NewsResource(NewsService newsService) {
-    this.newsService = newsService;
-  }
 
   @GetMapping(value = "/{id}")
   public ResponseEntity<News> findOne(@PathVariable("id") String id){

@@ -1,8 +1,10 @@
 package springfive.cms.domain.service;
 
+import java.util.List;
+import java.util.Optional;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
+import org.springframework.transaction.annotation.Transactional;
+import springfive.cms.domain.exceptions.CategoryNotFoundException;
 import springfive.cms.domain.models.Category;
 import springfive.cms.domain.repository.CategoryRepository;
 import springfive.cms.domain.vo.CategoryRequest;
@@ -11,6 +13,7 @@ import springfive.cms.domain.vo.CategoryRequest;
  * @author claudioed on 29/10/17. Project cms
  */
 @Service
+@Transactional(readOnly = true)
 public class CategoryService {
 
   private final CategoryRepository categoryRepository;
@@ -19,29 +22,43 @@ public class CategoryService {
     this.categoryRepository = categoryRepository;
   }
 
-  public Mono<Category> update(String id,CategoryRequest category){
-    return this.categoryRepository.findById(id).flatMap(categoryDatabase -> {
-      categoryDatabase.setName(category.getName());
-      return this.categoryRepository.save(categoryDatabase);
-    });
+  @Transactional
+  public Category update(Category category) {
+    return this.categoryRepository.save(category);
   }
 
-  public Mono<Category> create(CategoryRequest request){
+  @Transactional
+  public Category create(CategoryRequest request) {
     Category category = new Category();
     category.setName(request.getName());
     return this.categoryRepository.save(category);
   }
 
-  public void delete(String id){
-    this.categoryRepository.deleteById(id);
+  @Transactional
+  public void delete(String id) {
+    final Optional<Category> category = this.categoryRepository.findById(id);
+    category.ifPresent(this.categoryRepository::delete);
   }
 
-  public Flux<Category> findAll(){
+  public List<Category> findAll() {
     return this.categoryRepository.findAll();
   }
 
-  public Mono<Category> findOne(String id){
-    return this.categoryRepository.findById(id);
+  public List<Category> findByName(String name) {
+    return this.categoryRepository.findByName(name);
+  }
+
+  public List<Category> findByNameStartingWith(String name) {
+    return this.categoryRepository.findByNameIgnoreCaseStartingWith(name);
+  }
+
+  public Category findOne(String id) {
+    final Optional<Category> category = this.categoryRepository.findById(id);
+    if (category.isPresent()) {
+      return category.get();
+    } else {
+      throw new CategoryNotFoundException(id);
+    }
   }
 
 }

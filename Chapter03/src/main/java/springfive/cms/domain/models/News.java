@@ -2,32 +2,46 @@ package springfive.cms.domain.models;
 
 import java.util.HashSet;
 import java.util.Set;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.hibernate.annotations.GenericGenerator;
 
 /**
  * @author claudioed on 28/10/17. Project cms
  */
 @Data
-@Document(collection = "news")
+@Entity
+@Table(name = "news")
 public class News {
 
   @Id
+  @GeneratedValue(generator = "system-uuid")
+  @GenericGenerator(name = "system-uuid", strategy = "uuid")
   String id;
 
   String title;
 
   String content;
 
+  @ManyToOne
   User author;
 
+  @OneToMany
   Set<User> mandatoryReviewers = new HashSet<>();
 
+  @ElementCollection
   Set<Review> reviewers = new HashSet<>();
 
+  @OneToMany
   Set<Category> categories = new HashSet<>();
 
+  @ElementCollection
   Set<Tag> tags = new HashSet<>();
 
   public Boolean revised() {

@@ -1,9 +1,9 @@
 package springfive.cms.domain.service;
 
+import java.util.Optional;
 import java.util.UUID;
 import org.springframework.stereotype.Service;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
+import springfive.cms.domain.exceptions.UserNotFoundException;
 import springfive.cms.domain.models.User;
 import springfive.cms.domain.repository.UserRepository;
 import springfive.cms.domain.vo.UserRequest;
@@ -20,16 +20,20 @@ public class UserService {
     this.userRepository = userRepository;
   }
 
-  public Mono<User> update(String id, UserRequest userRequest) {
-    return this.userRepository.findById(id).flatMap(user -> {
-      user.setIdentity(userRequest.getIdentity());
-      user.setName(userRequest.getName());
-      user.setRole(userRequest.getRole());
-      return this.userRepository.save(user);
-    });
+  public User update(String id,UserRequest userRequest){
+    final Optional<User> user = this.userRepository.findById(id);
+    if(user.isPresent()){
+      final User userDB = user.get();
+      userDB.setIdentity(userRequest.getIdentity());
+      userDB.setName(userRequest.getName());
+      userDB.setRole(userRequest.getRole());
+      return this.userRepository.save(userDB);
+    }else {
+      throw new UserNotFoundException(id);
+    }
   }
 
-  public Mono<User> create(UserRequest userRequest) {
+  public User create(UserRequest userRequest){
     User user = new User();
     user.setId(UUID.randomUUID().toString());
     user.setIdentity(userRequest.getIdentity());
@@ -38,16 +42,22 @@ public class UserService {
     return this.userRepository.save(user);
   }
 
-  public void delete(String id) {
-    this.userRepository.deleteById(id);
+  public void delete(String id){
+    final Optional<User> user = this.userRepository.findById(id);
+    user.ifPresent(this.userRepository::delete);
   }
 
-  public Flux<User> findAll() {
+  public Iterable<User> findAll(){
     return this.userRepository.findAll();
   }
 
-  public Mono<User> findOne(String id) {
-    return this.userRepository.findById(id);
+  public User findOne(String id){
+    final Optional<User> user = this.userRepository.findById(id);
+    if(user.isPresent()){
+      return user.get();
+    }else {
+      throw new UserNotFoundException(id);
+    }
   }
 
 }

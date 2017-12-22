@@ -5,10 +5,8 @@ import springfive.twitterconsumer.infra.twitter.EncodeUtils.computeSignature
 import springfive.twitterconsumer.infra.twitter.EncodeUtils.encode
 import java.util.*
 
-
 /**
  * @author claudioed on 18/12/17.
- * Project twitter-consumer
  */
 object Twitter {
 

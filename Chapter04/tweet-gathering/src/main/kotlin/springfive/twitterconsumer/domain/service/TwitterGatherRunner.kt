@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit
 
 /**
  * @author claudioed on 10/12/17.
- * Project twitter-consumer
  */
 @Service
 class TwitterGatherRunner(private val twitterGatherService: TweetGatherService,private val rabbitTemplate: RabbitTemplate) {

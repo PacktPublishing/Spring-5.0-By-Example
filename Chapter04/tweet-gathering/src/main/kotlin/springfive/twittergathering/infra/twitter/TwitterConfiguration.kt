@@ -1,4 +1,4 @@
-package springfive.twitterconsumer.infra.twitter
+package springfive.twittergathering.infra.twitter
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean

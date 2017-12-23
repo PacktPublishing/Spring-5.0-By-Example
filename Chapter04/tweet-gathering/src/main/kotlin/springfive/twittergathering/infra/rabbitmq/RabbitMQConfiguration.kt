@@ -1,4 +1,4 @@
-package springfive.twitterconsumer.infra.rabbitmq
+package springfive.twittergathering.infra.rabbitmq
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule

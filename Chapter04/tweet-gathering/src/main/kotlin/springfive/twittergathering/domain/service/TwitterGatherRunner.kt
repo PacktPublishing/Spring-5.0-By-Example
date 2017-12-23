@@ -1,11 +1,11 @@
-package springfive.twitterconsumer.domain.service
+package springfive.twittergathering.domain.service
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener
 import org.springframework.amqp.rabbit.core.RabbitTemplate
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
 import reactor.core.scheduler.Schedulers
-import springfive.twitterconsumer.domain.TrackedHashTag
+import springfive.twittergathering.domain.TrackedHashTag
 import java.util.concurrent.CompletableFuture
 import java.util.concurrent.TimeUnit
 

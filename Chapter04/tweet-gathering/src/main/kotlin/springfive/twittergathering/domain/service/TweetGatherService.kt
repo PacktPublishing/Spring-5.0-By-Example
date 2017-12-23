@@ -1,4 +1,4 @@
-package springfive.twitterconsumer.domain.service
+package springfive.twittergathering.domain.service
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service
 import org.springframework.web.reactive.function.BodyInserters
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.core.publisher.Flux
-import springfive.twitterconsumer.infra.twitter.Twitter
-import springfive.twitterconsumer.infra.twitter.TwitterAppSettings
-import springfive.twitterconsumer.infra.twitter.TwitterToken
+import springfive.twittergathering.infra.twitter.Twitter
+import springfive.twittergathering.infra.twitter.TwitterAppSettings
+import springfive.twittergathering.infra.twitter.TwitterToken
 
 
 /**

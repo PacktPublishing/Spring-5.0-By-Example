@@ -1,4 +1,4 @@
-package springfive.twitterconsumer.infra.rabbitmq
+package springfive.twittergathering.infra.rabbitmq
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
@@ -14,11 +14,11 @@ import org.springframework.context.annotation.Configuration
 
 /**
  * @author claudioed on 20/12/17.
- * Project twitter-consumer
  */
 @Configuration
-open class RabbitMQConfiguration(@Value("\${queue.twitter}")  val queue:String,
-                                 @Value("\${exchange.twitter}")  val exchange:String){
+open class RabbitMQConfiguration(@Value("\${queue.twitter}") private val queue:String,
+                                 @Value("\${exchange.twitter}") private val exchange:String,
+                                 @Value("\${routing_key.track}") private val routingKey:String){
 
     @Bean
     open fun queue():Queue{
@@ -32,7 +32,7 @@ open class RabbitMQConfiguration(@Value("\${queue.twitter}")  val queue:String,
 
     @Bean
     open fun binding(queue: Queue, exchange: TopicExchange): Binding {
-        return BindingBuilder.bind(queue).to(exchange).with("track.*")
+        return BindingBuilder.bind(queue).to(exchange).with(this.routingKey)
     }
 
     @Bean

@@ -15,3 +15,17 @@ queue:
   twitter: twitter-stream
 exchange:
   twitter: twitter-exchange
+routing_key:
+  track: track.*
+
+server:
+  port: 8081
+
+info:
+  project: "twitter-gathering"
+  kotlin: @kotlin.version@
+
+management:
+  endpoints:
+    web:
+      expose: "*"

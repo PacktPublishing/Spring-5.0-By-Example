@@ -1,8 +1,8 @@
-package springfive.twitterconsumer.domain.resource
+package springfive.twittertracked.domain.resource
 
 import org.springframework.web.bind.annotation.*
-import springfive.twitterconsumer.domain.TrackedHashTag
-import springfive.twitterconsumer.domain.service.TrackedHashTagService
+import springfive.twittertracked.domain.TrackedHashTag
+import springfive.twittertracked.domain.service.TrackedHashTagService
 
 /**
  * @author claudioed on 06/12/17.

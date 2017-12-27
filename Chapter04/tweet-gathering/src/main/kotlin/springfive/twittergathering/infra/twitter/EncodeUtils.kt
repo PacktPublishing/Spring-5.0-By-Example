@@ -1,11 +1,10 @@
-package springfive.twitterconsumer.infra.twitter
+package springfive.twittergathering.infra.twitter
 
 import java.io.UnsupportedEncodingException
 import java.net.URLEncoder
 import java.security.GeneralSecurityException
 import java.util.*
 import javax.crypto.Mac
-import javax.crypto.SecretKey
 import javax.crypto.spec.SecretKeySpec
 
 

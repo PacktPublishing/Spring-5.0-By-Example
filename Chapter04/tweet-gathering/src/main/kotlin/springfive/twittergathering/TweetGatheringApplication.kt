@@ -1,4 +1,4 @@
-package springfive.twitterconsumer
+package springfive.twittergathering
 
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -10,12 +10,12 @@ import org.springframework.scheduling.annotation.EnableScheduling
  */
 @SpringBootApplication
 @EnableScheduling
-open class TrackedHashTagApplication {
+open class TweetGatheringApplication {
 
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            SpringApplication.run(TrackedHashTagApplication::class.java, *args)
+            SpringApplication.run(TweetGatheringApplication::class.java, *args)
         }
     }
 

@@ -10,4 +10,4 @@ queue:
 exchange:
   twitter: twitter-exchange
 server:
-  port: 8081
+  port: 9099

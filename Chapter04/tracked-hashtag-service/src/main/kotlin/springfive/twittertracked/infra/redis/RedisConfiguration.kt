@@ -1,4 +1,4 @@
-package springfive.twitterconsumer.infra.redis
+package springfive.twittertracked.infra.redis
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

@@ -1,4 +1,4 @@
-package springfive.twitterconsumer.domain
+package springfive.twittergathering.domain
 
 /**
  * @author claudioed on 06/12/17.

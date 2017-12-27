@@ -1,14 +1,12 @@
-package springfive.twitterconsumer.infra.twitter
+package springfive.twittergathering.infra.twitter
 
 import org.springframework.util.StringUtils
-import springfive.twitterconsumer.infra.twitter.EncodeUtils.computeSignature
-import springfive.twitterconsumer.infra.twitter.EncodeUtils.encode
+import springfive.twittergathering.infra.twitter.EncodeUtils.computeSignature
+import springfive.twittergathering.infra.twitter.EncodeUtils.encode
 import java.util.*
-
 
 /**
  * @author claudioed on 18/12/17.
- * Project twitter-consumer
  */
 object Twitter {
 

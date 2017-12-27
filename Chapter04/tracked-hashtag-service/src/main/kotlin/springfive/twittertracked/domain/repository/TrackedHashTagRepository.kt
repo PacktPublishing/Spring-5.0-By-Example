@@ -1,10 +1,10 @@
-package springfive.twitterconsumer.domain.repository
+package springfive.twittertracked.domain.repository
 
 import org.springframework.data.redis.core.ReactiveRedisTemplate
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-import springfive.twitterconsumer.domain.TrackedHashTag
+import springfive.twittertracked.domain.TrackedHashTag
 
 /**
  * @author claudioed on 06/12/17.

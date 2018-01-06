@@ -5,6 +5,8 @@ server:
 eureka:
   instance:
     hostname: discovery
+    health-check-url-path: /actuator/health
+    status-page-url-path: /actuator/info    
   client:
     registerWithEureka: false
     fetchRegistry: false

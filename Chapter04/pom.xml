@@ -5,12 +5,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>springfive</groupId>
-  <artifactId>tweet-gathering</artifactId>
+  <artifactId>twitter-consumer</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>tweet-gathering</name>
-  <description>Tweet Gathering</description>
+  <name>twitter-consumer</name>
+  <description>Demo project for Spring Boot</description>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -30,7 +30,18 @@
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-webflux</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
     </dependency>
 
     <dependency>
@@ -57,21 +68,9 @@
       <scope>test</scope>
     </dependency>
 
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-amqp</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-actuator</artifactId>
-    </dependency>
-
   </dependencies>
 
   <build>
-
-    <finalName>tweet_gathering</finalName>
 
     <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
     <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
@@ -81,13 +80,6 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>repackage</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
 
       <plugin>
@@ -113,45 +105,6 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>io.fabric8</groupId>
-        <artifactId>docker-maven-plugin</artifactId>
-        <version>0.21.0</version>
-        <configuration>
-          <images>
-            <image>
-              <name>springfivebyexample/${project.build.finalName}</name>
-              <build>
-                <from>openjdk:latest</from>
-                <entryPoint>java -Dspring.profiles.active=container -jar /application/${project.build.finalName}.jar</entryPoint>
-                <assembly>
-                  <basedir>/application</basedir>
-                  <descriptorRef>artifact</descriptorRef>
-                  <inline>
-                    <id>assembly</id>
-                    <files>
-                      <file>
-                        <source>target/${project.build.finalName}.jar</source>
-                      </file>
-                    </files>
-                  </inline>
-                </assembly>
-                <tags>
-                  <tag>latest</tag>
-                </tags>
-                <ports>
-                  <port>8081</port>
-                </ports>
-              </build>
-              <run>
-                <namingStrategy>alias</namingStrategy>
-              </run>
-              <alias>${project.build.finalName}</alias>
-            </image>
-          </images>
-        </configuration>
       </plugin>
 
     </plugins>
@@ -195,5 +148,6 @@
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
+
 
 </project>

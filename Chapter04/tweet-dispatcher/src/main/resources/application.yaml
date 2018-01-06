@@ -9,5 +9,6 @@ queue:
   twitter: twitter-stream
 exchange:
   twitter: twitter-exchange
+
 server:
   port: 9099

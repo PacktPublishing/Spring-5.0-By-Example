@@ -1,4 +1,4 @@
-package springfive.twitterconsumer.domain.service
+package springfive.twitterdispatcher.domain.service
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
@@ -12,7 +12,6 @@ import reactor.rabbitmq.Receiver
 
 /**
  * @author claudioed on 26/12/17.
- * Project tweet-dispatcher
  */
 @Service
 class TwitterDispatcher(private @Value("\${queue.twitter}") val queue: String,

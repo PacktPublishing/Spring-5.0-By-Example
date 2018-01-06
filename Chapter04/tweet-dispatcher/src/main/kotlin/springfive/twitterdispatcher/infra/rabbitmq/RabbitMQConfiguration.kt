@@ -1,4 +1,4 @@
-package springfive.twitterconsumer.infra.rabbitmq
+package springfive.twitterdispatcher.infra.rabbitmq
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
@@ -13,19 +13,18 @@ import reactor.rabbitmq.ReceiverOptions
 
 /**
  * @author claudioed on 20/12/17.
- * Project twitter-consumer
  */
 @Configuration
-open class RabbitMQConfiguration(private @Value("\${spring.rabbitmq.host}")  val host:String,
-                                 private @Value("\${spring.rabbitmq.port}")  val port:Int,
-                                 private @Value("\${spring.rabbitmq.username}")  val username:String,
-                                 private @Value("\${spring.rabbitmq.password}")  val password:String){
+class RabbitMQConfiguration(private @Value("\${spring.rabbitmq.host}") val host: String,
+                            private @Value("\${spring.rabbitmq.port}") val port: Int,
+                            private @Value("\${spring.rabbitmq.username}") val username: String,
+                            private @Value("\${spring.rabbitmq.password}") val password: String) {
 
     @Bean
-    open fun mapper(): ObjectMapper = ObjectMapper().registerModule(KotlinModule())
+    fun mapper(): ObjectMapper = ObjectMapper().registerModule(KotlinModule())
 
     @Bean
-    open fun connectionFactory():ConnectionFactory{
+    fun connectionFactory(): ConnectionFactory {
         val connectionFactory = ConnectionFactory()
         connectionFactory.username = this.username
         connectionFactory.password = this.password
@@ -36,7 +35,7 @@ open class RabbitMQConfiguration(private @Value("\${spring.rabbitmq.host}")  val
     }
 
     @Bean
-    open fun receiver(connectionFactory: ConnectionFactory):Receiver{
+    fun receiver(connectionFactory: ConnectionFactory): Receiver {
         val options = ReceiverOptions()
         options.connectionFactory(connectionFactory)
         return ReactorRabbitMq.createReceiver(options)

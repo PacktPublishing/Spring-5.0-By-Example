@@ -1,4 +1,4 @@
-package springfive.twitterconsumer.domain.controller
+package springfive.twitterdispatcher.domain.controller
 
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.GetMapping
@@ -6,12 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import reactor.core.publisher.Flux
-import springfive.twitterconsumer.domain.service.Tweet
-import springfive.twitterconsumer.domain.service.TwitterDispatcher
+import springfive.twitterdispatcher.domain.service.Tweet
+import springfive.twitterdispatcher.domain.service.TwitterDispatcher
 
 /**
  * @author claudioed on 26/12/17.
- * Project tweet-dispatcher
  */
 @RestController
 @RequestMapping("/tweets")

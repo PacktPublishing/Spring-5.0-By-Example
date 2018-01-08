@@ -1,0 +1,31 @@
+twitter:
+  consumer-key: ${consumer-key}
+  consumer-secret: ${consumer-secret}
+  access-token: ${access-token}
+  access-token-secret: ${access-token-secret}
+
+spring:
+  rabbitmq:
+    host: localhost
+    username: guest
+    password: guest
+    port: 5672
+
+queue:
+  twitter: twitter-stream
+exchange:
+  twitter: twitter-exchange
+routing_key:
+  track: track.*
+
+server:
+  port: 8081
+
+info:
+  project: "twitter-gathering"
+  kotlin: @kotlin.version@
+
+management:
+  endpoints:
+    web:
+      expose: "*"

@@ -1,5 +1,6 @@
 package springfive.twittergathering.domain.service
 
+import org.springframework.amqp.rabbit.annotation.Queue
 import org.springframework.amqp.rabbit.annotation.RabbitListener
 import org.springframework.amqp.rabbit.core.RabbitTemplate
 import org.springframework.stereotype.Service
@@ -15,7 +16,7 @@ import java.util.concurrent.TimeUnit
 @Service
 class TwitterGatherRunner(private val twitterGatherService: TweetGatherService,private val rabbitTemplate: RabbitTemplate) {
 
-    @RabbitListener(queues = ["twitter-track-hashtag"])
+    @RabbitListener(queuesToDeclare = [Queue(name = "twitter-track-hashtag", durable = "false")])
     fun receive(hashTag:TrackedHashTag) {
         val streamFrom = this.twitterGatherService.streamFrom(hashTag.hashTag).filter({
             return@filter it.id.isNotEmpty() && it.text.isNotEmpty() && it.createdAt.isNotEmpty()

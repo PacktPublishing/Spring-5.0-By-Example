@@ -12,3 +12,23 @@ exchange:
 
 server:
   port: 9099
+
+---
+
+spring:
+  profiles: docker
+
+spring:
+  rabbitmq:
+    host: rabbitmq
+    username: guest
+    password: guest
+    port: 5672
+
+queue:
+  twitter: twitter-stream
+exchange:
+  twitter: twitter-exchange
+
+server:
+  port: 9099

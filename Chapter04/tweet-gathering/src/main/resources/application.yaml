@@ -29,3 +29,40 @@ management:
   endpoints:
     web:
       expose: "*"
+
+---
+
+spring:
+  profiles: docker
+
+twitter:
+  consumer-key: ${CONSUMER_KEY}
+  consumer-secret: ${CONSUMER_SECRET}
+  access-token: ${ACCESS_TOKEN}
+  access-token-secret: ${ACCESS_TOKEN_SECRET}
+
+spring:
+  rabbitmq:
+    host: rabbitmq
+    username: guest
+    password: guest
+    port: 5672
+
+queue:
+  twitter: twitter-stream
+exchange:
+  twitter: twitter-exchange
+routing_key:
+  track: track.*
+
+server:
+  port: 8081
+
+info:
+  project: "twitter-gathering"
+  kotlin: @kotlin.version@
+
+management:
+  endpoints:
+    web:
+      expose: "*"

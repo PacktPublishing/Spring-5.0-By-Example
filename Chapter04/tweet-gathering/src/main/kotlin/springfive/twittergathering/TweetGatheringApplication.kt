@@ -15,6 +15,7 @@ open class TweetGatheringApplication {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
+            println(System.getenv().toString())
             SpringApplication.run(TweetGatheringApplication::class.java, *args)
         }
     }

@@ -5,4 +5,6 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
 logging:
-  level: debug
+  level:
+    com.netflix.discovery: 'ON'
+    org.springframework.cloud.gateway: 'TRACE'  

@@ -1,0 +1,5 @@
+spring:
+  webflux:
+    static-path-pattern: /resources/**
+server:
+  port: 7000

@@ -1,0 +1,11 @@
+server:
+  port: 9999
+
+spring:
+  rabbitmq:
+    port: 5672
+    host: localhost
+
+logging:
+  level:
+    ROOT: INFO

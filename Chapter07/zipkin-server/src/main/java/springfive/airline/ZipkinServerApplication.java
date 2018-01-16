@@ -1,11 +1,13 @@
-package springfive.airline.zipkinserver;
+package springfive.airline;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import zipkin.server.EnableZipkinServer;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.sleuth.zipkin.stream.EnableZipkinStreamServer;
 
-@EnableZipkinServer
 @SpringBootApplication
+@EnableZipkinStreamServer
+@EnableEurekaClient
 public class ZipkinServerApplication {
 
 	public static void main(String[] args) {

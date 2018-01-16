@@ -1,12 +1,7 @@
 spring:
   application:
-    name: zipkinserver
+    name: zipkin
   cloud:
     config:
       uri: http://localhost:5000
       label: master
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://${eureka.host:localhost}:${eureka.port:8761}/eureka/

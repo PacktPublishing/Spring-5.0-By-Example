@@ -11,7 +11,7 @@ spring:
     username: root
     password: root
     initialize: true
-    continue-on-error: true
+    continue-on-error: false
   sleuth:
     enabled: false
 

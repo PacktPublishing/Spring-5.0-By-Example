@@ -12,7 +12,7 @@ spring:
     username: root
     password: root
     initialize: true
-    continue-on-error: false
+    continue-on-error: true
   sleuth:
     enabled: false
 

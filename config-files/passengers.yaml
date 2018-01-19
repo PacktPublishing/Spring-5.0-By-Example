@@ -12,8 +12,6 @@ spring:
   data:
     mongodb:
       database: passengers
-      username: mongodb
-      password: admin
       host: localhost
 eureka:
   client:

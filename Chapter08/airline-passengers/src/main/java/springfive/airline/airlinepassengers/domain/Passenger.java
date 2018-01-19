@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import springfive.airline.airlinepassengers.resource.data.PassengerRequest;
 
 @Data
 @Document(collection = "passengers")
@@ -46,6 +47,17 @@ public class Passenger {
     passenger.setDocuments(documents);
     passenger.setBornDate(LocalDate.parse(bornDate,FORMATTER));
     return passenger;
+  }
+
+  public Passenger fromPassengerRequest(PassengerRequest passengerRequest){
+    this.name = passengerRequest.getName();
+    this.lastName = passengerRequest.getLastName();
+    this.fidelityNumber = passengerRequest.getFidelityNumber();
+    this.contact  = passengerRequest.getContact();
+    this.address = passengerRequest.getAddress();
+    this.documents = passengerRequest.getDocuments();
+    this.bornDate = LocalDate.parse(passengerRequest.getBornDate(),FORMATTER);
+    return this;
   }
 
 }

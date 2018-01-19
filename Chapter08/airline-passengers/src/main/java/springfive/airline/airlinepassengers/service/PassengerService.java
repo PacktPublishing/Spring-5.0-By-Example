@@ -35,4 +35,8 @@ public class PassengerService {
     return this.passengerRepository.save(passenger);
   }
 
+  public Mono<Void> delete(Passenger passenger){
+    return this.passengerRepository.delete(passenger);
+  }
+
 }

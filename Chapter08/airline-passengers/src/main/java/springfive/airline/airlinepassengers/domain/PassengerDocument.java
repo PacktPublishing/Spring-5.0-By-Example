@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class PassengerDocument {
 
-    String name;
+  String name;
 
-    String value;
+  String value;
 
 }

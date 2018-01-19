@@ -1,27 +1,51 @@
 package springfive.airline.airlinepassengers.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Set;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
-import java.util.Set;
-
+@Data
 @Document(collection = "passengers")
+@NoArgsConstructor
 public class Passenger {
 
-    @Id
-    String id;
+  private static final transient DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
-    String name;
+  @Id
+  @JsonIgnore
+  String id;
 
-    String lastName;
+  String name;
 
-    Set<PassengerDocument> documents;
+  String lastName;
 
-    Set<Address> addresses;
+  String fidelityNumber;
 
-    LocalDateTime bornDate;
+  Set<PassengerDocument> documents;
 
-    String fidelityNumber;
+  Address address;
+
+  LocalDate bornDate;
+
+  Contact contact;
+
+  @Builder
+  public static Passenger newPassenger(String name,String lastName,String fidelityNumber,Set<PassengerDocument> documents,Address address,String bornDate,Contact contact){
+    final Passenger passenger = new Passenger();
+    passenger.setName(name);
+    passenger.setLastName(lastName);
+    passenger.setFidelityNumber(fidelityNumber);
+    passenger.setContact(contact);
+    passenger.setAddress(address);
+    passenger.setDocuments(documents);
+    passenger.setBornDate(LocalDate.parse(bornDate,FORMATTER));
+    return passenger;
+  }
 
 }

@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: passengers
+  cloud:
+    config:
+      uri: http://localhost:5000
+      label: master

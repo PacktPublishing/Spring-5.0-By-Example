@@ -1,22 +1,30 @@
 package springfive.airline.airlinepassengers.resource.data;
 
-import lombok.Data;
-import springfive.airline.airlinepassengers.domain.PassengerDocument;
-
-import java.time.LocalDateTime;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Set;
+import lombok.Data;
+import springfive.airline.airlinepassengers.domain.Address;
+import springfive.airline.airlinepassengers.domain.Contact;
+import springfive.airline.airlinepassengers.domain.PassengerDocument;
 
 @Data
 public class PassengerRequest {
 
-    String name;
+  @JsonProperty("fidelity_number")
+  String fidelityNumber;
 
-    String lastName;
+  String name;
 
-    Set<PassengerDocument> documents;
+  @JsonProperty("last_name")
+  String lastName;
 
-    LocalDateTime bornDate;
+  Set<PassengerDocument> documents;
 
-    String fidelityNumber;
+  @JsonProperty("born_date")
+  String bornDate;
+
+  Address address;
+
+  Contact contact;
 
 }

@@ -5,8 +5,8 @@
     "version": "1.0.0",
     "title": "Passenger API's"
   },
-  "host": "api.airline.passenger",
-  "basePath": "/passenger",
+  "host": "localhost:50000",
+  "basePath": "/",
   "schemes": [
     "https",
     "http"
@@ -131,10 +131,13 @@
         "name": {
           "type": "string"
         },
-        "middle_name": {
-          "type": "integer"
+        "last_name": {
+          "type": "string"
         },
-        "surname": {
+        "fidelity_number": {
+          "type": "string"
+        },
+        "born_date": {
           "type": "string"
         },
         "address": {
@@ -142,6 +145,12 @@
         },
         "contact": {
           "$ref": "#/definitions/contact"
+        },
+        "documents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/documents"
+          }
         }
       }
     },
@@ -182,13 +191,10 @@
     "documents": {
       "type": "object",
       "properties": {
-        "email": {
+        "name": {
           "type": "string"
         },
-        "phone_1": {
-          "type": "string"
-        },
-        "phone_2": {
+        "value": {
           "type": "string"
         }
       }

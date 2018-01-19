@@ -1,20 +1,21 @@
 package springfive.airline.airlinepassengers.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
 public class Address {
 
-    String street;
+  @JsonProperty("address_1")
+  String address1;
 
-    String number;
+  @JsonProperty("address_2")
+  String address2;
 
-    String notes;
+  String city;
 
-    String city;
+  String state;
 
-    String state;
-
-    String country;
+  String country;
 
 }

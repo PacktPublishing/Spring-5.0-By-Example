@@ -3,16 +3,10 @@ package springfive.airline.airlinefare.domain;
 import lombok.Data;
 
 @Data
-public class Passenger {
+public class Class {
 
   String id;
 
   String name;
-
-  String email;
-
-  String fidelityNumber;
-
-  PassengerDocument document;
 
 }

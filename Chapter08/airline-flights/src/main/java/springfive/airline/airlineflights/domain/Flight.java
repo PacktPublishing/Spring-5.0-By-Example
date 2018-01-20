@@ -30,8 +30,10 @@ public class Flight {
 
   Set<Connection> connections;
 
+  Set<RegularPrice> prices;
+
   @Builder
-  public static Flight newFlight(Airport from,Airport to,String departureAt,String arriveAt,Plane plane,Set<Connection> connections){
+  public static Flight newFlight(Airport from,Airport to,String departureAt,String arriveAt,Plane plane,Set<Connection> connections,Set<RegularPrice> prices){
     Flight newFlight = new Flight();
     newFlight.from = from;
     newFlight.to = to;
@@ -39,6 +41,7 @@ public class Flight {
     newFlight.arriveAt = LocalDateTime.parse(arriveAt, FORMATTER);
     newFlight.plane = plane;
     newFlight.connections = connections;
+    newFlight.prices = prices;
     return newFlight;
   }
 

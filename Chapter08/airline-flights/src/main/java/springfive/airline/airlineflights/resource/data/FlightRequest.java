@@ -6,6 +6,7 @@ import springfive.airline.airlineflights.domain.Airport;
 import springfive.airline.airlineflights.domain.Connection;
 
 import java.util.Set;
+import springfive.airline.airlineflights.domain.RegularPrice;
 
 @Data
 public class FlightRequest {
@@ -24,5 +25,7 @@ public class FlightRequest {
   String planeId;
 
   Set<Connection> connections;
+
+  Set<RegularPrice> prices;
 
 }

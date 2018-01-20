@@ -36,6 +36,7 @@ public class FlightService {
             .arriveAt(flight.getArriveAt())
             .departureAt(flight.getDepartureAt())
             .connections(flight.getConnections())
+            .prices(flight.getPrices())
             .build()));
     }
 

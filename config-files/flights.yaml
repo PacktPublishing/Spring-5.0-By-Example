@@ -19,4 +19,5 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
       
 planes:
-  service: http://PLANES
+  service: PLANES
+  path: planes

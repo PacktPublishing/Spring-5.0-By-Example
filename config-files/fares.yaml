@@ -1,0 +1,19 @@
+
+server:
+  port: 50009
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  sleuth:
+    annotation:
+      enabled: true
+  redis:
+    host: localhost
+    port: 6379
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

@@ -7,6 +7,6 @@ public class Plane {
 
   String id;
 
-  String name;
+  PlaneModel model;
 
 }

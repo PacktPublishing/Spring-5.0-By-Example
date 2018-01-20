@@ -29,7 +29,14 @@ public class FlightService {
     }
 
     public Mono<Flight> save(@NonNull FlightRequest flight) {
-        return this.planeService.plane(flight.getPlaneId()).flatMap(plane -> this.flightRepository.save(null));
+        return this.planeService.plane(flight.getPlaneId()).flatMap(plane -> this.flightRepository.save(Flight.builder()
+            .from(flight.getFrom())
+            .to(flight.getTo())
+            .plane(plane)
+            .arriveAt(flight.getArriveAt())
+            .departureAt(flight.getDepartureAt())
+            .connections(flight.getConnections())
+            .build()));
     }
 
     public Mono<Void> deleteFlight(@NonNull Flight flight){

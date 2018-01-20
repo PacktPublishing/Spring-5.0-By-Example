@@ -1,5 +1,6 @@
 package springfive.airline.airlineflights.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDateTime;
 import lombok.Data;
 
@@ -10,8 +11,12 @@ public class Connection {
 
   Airport to;
 
+  @JsonProperty("departure_at")
   LocalDateTime departureAt;
 
+  @JsonProperty("arrive_at")
   LocalDateTime arriveAt;
+
+  Integer order;
 
 }

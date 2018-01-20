@@ -1,0 +1,200 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Planes API's",
+    "version": "1.0.0",
+    "title": "Planes API's"
+  },
+  "host": "localhost:50001",
+  "basePath": "/",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/planes": {
+      "get": {
+        "tags": [
+          "planes crud"
+        ],
+        "description": "List all planes",
+        "summary": "List all planes",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "planes crud"
+        ],
+        "description": "It creates a plane",
+        "summary": "Create a plane",
+        "parameters": [
+          {
+            "name": "plane",
+            "in": "body",
+            "description": "Plane data in JSON notation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/plane"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/planes/{id}": {
+      "get": {
+        "tags": [
+          "planes crud"
+        ],
+        "description": "It retrieve plane by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "plane id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "planes crud"
+        ],
+        "description": "It deletes a plane",
+        "summary": "Delete a plane",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "plane id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Removed successfully"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "planes crud"
+        ],
+        "description": "It updates a plane",
+        "summary": "Update a passenger",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "plane id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "plane",
+            "in": "body",
+            "description": "Plane data in JSON notation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/plane"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "plane": {
+      "type": "object",
+      "properties": {
+        "owner": {
+          "type": "string"
+        },
+        "model": {
+          "$ref": "#/definitions/plane_model"
+        },
+        "fidelity_number": {
+          "type": "string"
+        },
+        "seats": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/seat"
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "plane_model": {
+      "type": "object",
+      "properties": {
+        "factory": {
+          "type": "string"
+        },
+        "model": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "reference_name": {
+          "type": "string"
+        }
+      }
+    },
+    "seat": {
+      "type": "object",
+      "properties": {
+        "identity": {
+          "type": "string"
+        },
+        "row": {
+          "type": "integer"
+        },
+        "right_side": {
+          "$ref": "#/definitions/seat"
+        },
+        "left_side": {
+          "$ref": "#/definitions/seat"
+        },
+        "category": {
+          "$ref": "#/definitions/category"
+        }
+      }
+    },
+    "category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

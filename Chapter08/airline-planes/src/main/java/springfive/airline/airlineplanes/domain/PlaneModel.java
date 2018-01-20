@@ -1,5 +1,6 @@
 package springfive.airline.airlineplanes.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
@@ -11,6 +12,7 @@ public class PlaneModel {
 
   String name;
 
-  String comercialName;
+  @JsonProperty("reference_name")
+  String referenceName;
 
 }

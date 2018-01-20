@@ -3,12 +3,11 @@ package springfive.airline.airlineflights.domain;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Set;
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import springfive.airline.airlineflights.resource.data.FlightRequest;
-
-import javax.swing.*;
 
 @Data
 @Document(collection = "flights")
@@ -30,6 +29,18 @@ public class Flight {
   Plane plane;
 
   Set<Connection> connections;
+
+  @Builder
+  public static Flight newFlight(Airport from,Airport to,String departureAt,String arriveAt,Plane plane,Set<Connection> connections){
+    Flight newFlight = new Flight();
+    newFlight.from = from;
+    newFlight.to = to;
+    newFlight.departureAt = LocalDateTime.parse(departureAt, FORMATTER);
+    newFlight.arriveAt = LocalDateTime.parse(arriveAt, FORMATTER);
+    newFlight.plane = plane;
+    newFlight.connections = connections;
+    return newFlight;
+  }
 
   public Flight fromFlightRequest(FlightRequest flightRequest){
     this.from = flightRequest.getFrom();

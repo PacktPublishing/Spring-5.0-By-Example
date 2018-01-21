@@ -1,10 +1,3 @@
-
-server:
-  port: 50008
-  
-management:
-  port: -1
-
 endpoints:
   shutdown:
     enabled: true
@@ -19,7 +12,7 @@ spring:
 
 turbine:
   stream:
-    port: 50007
+    port: 50008
   aggregator:
     clusterConfig: ALL
   appConfig: flights,planes,passengers,gateway,fares

@@ -1,5 +1,7 @@
 package springfive.airline.airlineflights.service;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -25,6 +27,11 @@ public class PlaneService {
     this.planesServiceApiPath = planesServiceApiPath;
   }
 
+  @HystrixCommand(commandKey = "plane-by-id",groupKey = "airline-flights",commandProperties = {
+      @HystrixProperty(name="circuitBreaker.requestVolumeThreshold",value="10"),
+      @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds",value="10000"),
+      @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "2000")
+  })
   public Mono<Plane> plane(String id) {
     return discoveryService.serviceAddressFor(this.planesService).next().flatMap(
         address -> this.webClient.mutate().baseUrl(address + "/" + this.planesServiceApiPath + "/" + id).build().get().exchange()

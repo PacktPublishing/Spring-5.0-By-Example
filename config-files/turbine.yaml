@@ -1,1 +1,19 @@
 
+server:
+  port: 50006
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+
+turbine:
+  aggregator:
+    clusterConfig: ALL
+  appConfig: flights,planes,passengers,gateway,fares
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

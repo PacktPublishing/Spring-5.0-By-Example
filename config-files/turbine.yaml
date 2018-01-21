@@ -1,6 +1,15 @@
 
 server:
   port: 50008
+  
+management:
+  port: -1
+
+endpoints:
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
 spring:
   rabbitmq:
     host: localhost

@@ -18,6 +18,8 @@ spring:
     password: guest
 
 turbine:
+  stream:
+    port: 50007
   aggregator:
     clusterConfig: ALL
   appConfig: flights,planes,passengers,gateway,fares

@@ -1,24 +1,6 @@
-server:
-  port: 5010
-
-endpoints:
-  shutdown:
-    enabled: true
-  health:
-    sensitive: false
-spring:
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-
 turbine:
   stream:
-    port: 50008
-  aggregator:
-    clusterConfig: ALL
-  appConfig: flights,planes,passengers,gateway,fares
+    port: 8010
 
 eureka:
   client:

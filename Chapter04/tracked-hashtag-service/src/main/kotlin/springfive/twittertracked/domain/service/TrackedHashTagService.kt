@@ -18,10 +18,11 @@ class TrackedHashTagService(private val repository: TrackedHashTagRepository,
                             @Value("\${routing_key.track}") private val routingKey: String) {
 
     fun save(hashTag: TrackedHashTag) {
-        this.repository.save(hashTag)
-        Mono.fromFuture(CompletableFuture.runAsync {
-            this.rabbitTemplate.convertAndSend(this.exchange, this.routingKey, hashTag)
-        })
+        this.repository.save(hashTag).subscribe { data ->
+            Mono.fromFuture(CompletableFuture.runAsync {
+                this.rabbitTemplate.convertAndSend(this.exchange, this.routingKey, hashTag)
+            })
+        }
     }
 
     fun all() = this.repository.findAll()

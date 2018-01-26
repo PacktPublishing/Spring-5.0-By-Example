@@ -25,6 +25,7 @@ import springfive.cms.domain.vo.CategoryRequest;
  */
 @RestController
 @RequestMapping("/api/category")
+@Api(tags = "category", description = "Category API")
 public class CategoryResource {
 
   private final CategoryService categoryService;

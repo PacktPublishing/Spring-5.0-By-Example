@@ -26,6 +26,7 @@ management:
     enabled: false
   health:
     defaults: true
+    sensitive: false
   endpoints:
     web:
       expose: "*"

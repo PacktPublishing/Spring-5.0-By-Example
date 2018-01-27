@@ -24,9 +24,6 @@ eureka:
 management:
   security:
     enabled: false
-  endponints:
+  endpoints:
     web:
       expose: *
-endpoints:
-  default:
-    enabled: true

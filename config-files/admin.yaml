@@ -11,3 +11,5 @@ spring:
       discovery:
         converter:
           health-endpoint-path: /actuator/health
+    routes:
+      endpoints: actuator/env,actuator/metrics,actuator/dump,actuator/info,actuator/configprops,actuator/trace,actuator/logfile,actuator/refresh,actuator/heapdump,actuator/loggers,actuator/auditevents

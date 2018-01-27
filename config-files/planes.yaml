@@ -25,5 +25,5 @@ management:
   security:
     enabled: false
 endpoints:
-  actuator:
-    sensitive: true
+  default:
+    enabled: true

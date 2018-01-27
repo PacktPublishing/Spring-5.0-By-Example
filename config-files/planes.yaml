@@ -26,4 +26,4 @@ management:
     enabled: false
   endpoints:
     web:
-      expose: *
+      expose: "*"

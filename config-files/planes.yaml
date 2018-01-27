@@ -24,6 +24,8 @@ eureka:
 management:
   security:
     enabled: false
+  health:
+    defaults: true
   endpoints:
     web:
       expose: "*"
@@ -32,4 +34,5 @@ management:
     cors:
       allowed-origins: "*"
       allowed-methods: GET,POST
+      
       

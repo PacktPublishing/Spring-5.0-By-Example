@@ -12,4 +12,18 @@ spring:
         converter:
           health-endpoint-path: /actuator/health
     routes:
-      endpoints: actuator/env,actuator/metrics,actuator/dump,actuator/info,actuator/configprops,actuator/trace,actuator/logfile,actuator/refresh,actuator/heapdump,actuator/loggers,actuator/auditevents
+        endpoints:
+         - /actuator/env
+         - /actuator/metrics
+         - /actuator/trace
+         - /actuator/dump
+         - jolokia
+         - /actuator/info
+         - /actuator/configprops
+         - logfile
+         - refresh
+         - flyway
+         - liquibase
+         - /actuator/heapdump
+         - /actuator/loggers
+         - currentTime

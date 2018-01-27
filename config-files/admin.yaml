@@ -11,3 +11,4 @@ spring:
       discovery:
         converter:
           health-endpoint-path: /actuator/health
+          management-context-path: /actuator

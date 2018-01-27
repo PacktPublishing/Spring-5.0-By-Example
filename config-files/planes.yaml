@@ -29,3 +29,7 @@ management:
       expose: "*"
     health:
       show-details: true
+    cors:
+      allowed-origins: "*"
+      allowed-methods: GET,POST
+      

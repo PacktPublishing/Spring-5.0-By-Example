@@ -11,19 +11,3 @@ spring:
       discovery:
         converter:
           health-endpoint-path: /actuator/health
-    routes:
-        endpoints:
-         - /actuator/env
-         - /actuator/metrics
-         - /actuator/trace
-         - /actuator/dump
-         - jolokia
-         - /actuator/info
-         - /actuator/configprops
-         - logfile
-         - refresh
-         - flyway
-         - liquibase
-         - /actuator/heapdump
-         - /actuator/loggers
-         - currentTime

@@ -44,7 +44,6 @@ zuul:
     planes:
       path: /api/v1/planes/**
       serviceId: planes
-      stripPrefix: false
     flights:
       path: /api/v1/flights/**
       serviceId: flights

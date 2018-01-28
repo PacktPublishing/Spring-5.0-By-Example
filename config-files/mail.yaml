@@ -29,3 +29,6 @@ management:
 sendgrid:
   apikey: ${SENDGRID_APIKEY}
   url: ${SENDGRID_URL}
+
+mail:
+  queue: send-mail-request

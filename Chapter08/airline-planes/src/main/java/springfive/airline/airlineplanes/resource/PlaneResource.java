@@ -35,10 +35,10 @@ public class PlaneResource {
   }
 
   @GetMapping("/{id}")
-  public Mono<ResponseEntity<Plane>> plane(@PathVariable("id") String id) {
-    return this.planeService.plane(id).map(ResponseEntity::ok)
-        .defaultIfEmpty(ResponseEntity.notFound().build());
-  }
+  public Mono<ResponseEntity<Plane>> plane(@PathVariable("id") String id)
+      throws InterruptedException {
+    throw new IllegalArgumentException();
+    }
 
   @PostMapping
   public Mono<ResponseEntity<Void>> newPlane(

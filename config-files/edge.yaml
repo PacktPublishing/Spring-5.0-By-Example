@@ -24,3 +24,17 @@ logging:
   level:
     ROOT: INFO
     org.springframework.web: DEBUG
+management:
+  security:
+    enabled: false
+  health:
+    defaults: true
+    sensitive: true
+  endpoints:
+    web:
+      expose: "*"
+    health:
+      show-details: true
+    cors:
+      allowed-origins: "*"
+      allowed-methods: GET,POST

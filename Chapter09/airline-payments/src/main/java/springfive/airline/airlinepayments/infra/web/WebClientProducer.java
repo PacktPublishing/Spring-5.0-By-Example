@@ -1,4 +1,4 @@
-package springfive.airline.mailservice.domain.infra.web;
+package springfive.airline.airlinepayments.infra.web;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

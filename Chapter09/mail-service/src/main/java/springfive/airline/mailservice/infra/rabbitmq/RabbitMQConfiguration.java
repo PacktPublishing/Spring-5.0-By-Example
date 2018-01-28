@@ -1,4 +1,4 @@
-package springfive.airline.mailservice.domain.infra.rabbitmq;
+package springfive.airline.mailservice.infra.rabbitmq;
 
 import lombok.val;
 import org.springframework.amqp.core.AmqpAdmin;

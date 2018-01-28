@@ -25,23 +25,23 @@ public class BookingService {
     this.fareService = fareService;
   }
 
-  public Flux<Booking> byFlightId(String flightId){
+  public Flux<Booking> byFlightId(String flightId) {
     return this.bookingRepository.findByFlightId(flightId);
   }
 
-  public Mono<Booking> create(@NonNull BookingRequest bookingRequest){
-    return this.fareService.fare(bookingRequest.getFareId()).flatMap(fare ->{
-      val seats =fare.getReservations().stream().map(Reservation::getSeat).collect(toSet());
+  public Mono<Booking> create(@NonNull BookingRequest bookingRequest) {
+    return this.fareService.fare(bookingRequest.getFareId()).flatMap(fare -> {
+      val seats = fare.getReservations().stream().map(Reservation::getSeat).collect(toSet());
       val booking = Booking.builder().fare(fare).flight(fare.getFlight()).seats(seats).build();
       return this.bookingRepository.save(booking);
     });
   }
 
-  public Mono<Booking> booking(String id){
+  public Mono<Booking> booking(String id) {
     return this.bookingRepository.findById(id);
   }
 
-  public Mono<Void> delete(Booking booking){
+  public Mono<Void> delete(Booking booking) {
     return this.bookingRepository.delete(booking);
   }
 

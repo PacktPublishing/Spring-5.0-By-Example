@@ -1,0 +1,34 @@
+server:
+  port: 50050
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+  sleuth:
+    annotation:
+      enabled: true
+      
+management:
+  security:
+    enabled: false
+  health:
+    defaults: true
+    sensitive: true
+  endpoints:
+    web:
+      expose: "*"
+    health:
+      show-details: true
+    cors:
+      allowed-origins: "*"
+      allowed-methods: GET,POST
+
+sendgrid:
+  apikey: ${SENDGRID_APIKEY}
+  url: ${SENDGRID_URL}
+
+mail:
+  queue: send-mail-request

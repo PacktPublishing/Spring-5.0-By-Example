@@ -20,4 +20,20 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
   instance:
     statusPageUrlPath: /actuator/info
-    healthCheckUrlPath: /actuator/health      
+    healthCheckUrlPath: /actuator/health
+management:
+  security:
+    enabled: false
+  health:
+    defaults: true
+    sensitive: true
+  endpoints:
+    web:
+      expose: "*"
+    health:
+      show-details: true
+    cors:
+      allowed-origins: "*"
+      allowed-methods: GET,POST
+      
+      

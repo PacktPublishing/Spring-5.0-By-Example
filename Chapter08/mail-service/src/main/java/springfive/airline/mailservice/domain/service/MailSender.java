@@ -40,9 +40,8 @@ public class MailSender {
         .header("Content-Type","application/json")
         .retrieve()
         .onStatus(HttpStatus::is4xxClientError, clientResponse ->
-            Mono.error(new RuntimeException("Erron on send email feature"))
+            Mono.error(new RuntimeException("Error on send email"))
         ).bodyToFlux(Void.class);
   }
-
 
 }

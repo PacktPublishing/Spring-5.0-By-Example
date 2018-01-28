@@ -17,8 +17,8 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
   instance:
-    statusPageUrlPath: /actuator/info
-    healthCheckUrlPath: /actuator/health
+    statusPageUrlPath: /info
+    healthCheckUrlPath: /health
 
 logging:
   level:

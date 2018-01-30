@@ -14,6 +14,10 @@ spring:
     mongodb:
       database: planes
       host: localhost
+  oauth2:
+    resource:
+      userInfoUri: http://auth:7777/credential      
+      
 eureka:
   client:
     serviceUrl:
@@ -22,6 +26,7 @@ eureka:
     statusPageUrlPath: /actuator/info
     healthCheckUrlPath: /actuator/health
     instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    
 management:
   security:
     enabled: false

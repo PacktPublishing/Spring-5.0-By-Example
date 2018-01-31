@@ -16,7 +16,7 @@ spring:
       host: localhost
   oauth2:
     resource:
-      userInfoUri: http://auth:7777/credential      
+      userInfoUri: http://localhost:7777/credential      
       
 eureka:
   client:

@@ -7,7 +7,7 @@ spring:
     host: localhost
   datasource:
     schema: classpath:/mysql.sql
-    url: jdbc:mysql://${MYSQL_HOST:localhost}/zipkin?autoReconnect=true
+    url: jdbc:mysql://localhost:3306/zipkin?autoReconnect=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: root

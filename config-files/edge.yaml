@@ -59,3 +59,8 @@ zuul:
     auth:
       path: /api/v1/auth/**
       serviceId: auth    
+
+proxy:
+  auth:
+    routes:
+      users: oauth2

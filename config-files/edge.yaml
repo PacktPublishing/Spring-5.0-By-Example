@@ -43,27 +43,27 @@ zuul:
   routes:
     planes:
       path: /api/v1/planes/**
-      sensitiveHeaders: Cookie,Set-Cookie,Authorization
+      sensitiveHeaders: 
       serviceId: planes
     flights:
       path: /api/v1/flights/**
-      sensitiveHeaders: Cookie,Set-Cookie,Authorization
+      sensitiveHeaders: 
       serviceId: flights
     fares:
       path: /api/v1/fares/**
-      sensitiveHeaders: Cookie,Set-Cookie,Authorization
+      sensitiveHeaders: 
       serviceId: fares
     passengers:
       path: /api/v1/passengers/**
-      sensitiveHeaders: Cookie,Set-Cookie,Authorization
+      sensitiveHeaders: 
       serviceId: passengers
     payments:
       path: /api/v1/payments/**
-      sensitiveHeaders: Cookie,Set-Cookie,Authorization
+      sensitiveHeaders: 
       serviceId: payments
     auth:
       path: /api/v1/auth/**
-      sensitiveHeaders: Cookie,Set-Cookie,Authorization
+      sensitiveHeaders: 
       serviceId: auth    
 
 proxy:

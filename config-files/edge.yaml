@@ -69,4 +69,7 @@ zuul:
 proxy:
   auth:
     routes:
-      users: oauth2
+      planes: oauth2
+      flighst: oauth2
+      fares: oauth2
+      bookings: oauth2

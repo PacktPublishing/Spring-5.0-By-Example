@@ -54,7 +54,7 @@ public class OAuth2AuthServer extends AuthorizationServerConfigurerAdapter {
   public void configure(ClientDetailsServiceConfigurer clients)throws Exception {
     clients
         .inMemory()
-        .withClient("payments") // payments microservice
+        .withClient("ecommerce") // ecommerce microservice
         .secret("9ecc8459ea5f39f9da55cb4d71a70b5d1e0f0b80")
         .authorizedGrantTypes("authorization_code", "refresh_token", "implicit",
             "client_credentials")
@@ -66,7 +66,7 @@ public class OAuth2AuthServer extends AuthorizationServerConfigurerAdapter {
         .secret("4f7ec648a48b9d3fa239b497f7b6b4d8019697bd")
         .authorizedGrantTypes("authorization_code", "refresh_token", "implicit",
             "client_credentials")
-        .authorities("maintainer", "owner", "user")
+        .authorities("operator")
         .scopes("trust")
         .accessTokenValiditySeconds(ONE_DAY)
         .and()
@@ -74,7 +74,7 @@ public class OAuth2AuthServer extends AuthorizationServerConfigurerAdapter {
         .secret("f7641c289245d5d43d0aa96d0c14dbc6afba31fc")
         .authorizedGrantTypes("authorization_code", "refresh_token", "implicit",
             "client_credentials")
-        .authorities("maintainer", "owner", "user")
+        .authorities("operator")
         .scopes("trust")
         .accessTokenValiditySeconds(ONE_DAY)
         .and()
@@ -82,7 +82,7 @@ public class OAuth2AuthServer extends AuthorizationServerConfigurerAdapter {
         .secret("d658a112c1160fdcb5c6a4c3ce33c716cdb84160")
         .authorizedGrantTypes("authorization_code", "refresh_token", "implicit",
             "client_credentials")
-        .authorities("maintainer", "owner", "user")
+        .authorities("operator")
         .scopes("trust")
         .accessTokenValiditySeconds(ONE_DAY)
         .and()
@@ -90,7 +90,7 @@ public class OAuth2AuthServer extends AuthorizationServerConfigurerAdapter {
         .secret("da29f4b2ac608bdc8024b7ab084981fdf4014c16")
         .authorizedGrantTypes("authorization_code", "refresh_token", "implicit",
             "client_credentials")
-        .authorities("maintainer", "owner", "user")
+        .authorities("operator")
         .scopes("trust")
         .accessTokenValiditySeconds(ONE_DAY)
         .and()
@@ -98,7 +98,7 @@ public class OAuth2AuthServer extends AuthorizationServerConfigurerAdapter {
         .secret("e186b815cfc1a9988030a21ad8f32d8a6559f3b8")
         .authorizedGrantTypes("authorization_code", "refresh_token", "implicit",
             "client_credentials")
-        .authorities("maintainer", "owner", "user")
+        .authorities("operator")
         .scopes("trust")
         .accessTokenValiditySeconds(ONE_DAY);
   }

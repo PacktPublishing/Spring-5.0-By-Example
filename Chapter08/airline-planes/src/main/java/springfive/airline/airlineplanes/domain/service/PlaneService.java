@@ -1,12 +1,12 @@
-package springfive.airline.airlineplanes.service;
+package springfive.airline.airlineplanes.domain.service;
 
 import lombok.NonNull;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import springfive.airline.airlineplanes.domain.Plane;
-import springfive.airline.airlineplanes.repository.PlaneRepository;
-import springfive.airline.airlineplanes.resource.data.PlaneRequest;
+import springfive.airline.airlineplanes.domain.repository.PlaneRepository;
+import springfive.airline.airlineplanes.domain.resource.data.PlaneRequest;
 
 @Service
 public class PlaneService {

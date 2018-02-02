@@ -18,8 +18,8 @@ public class OAuthTokenProducer {
     private String publicKey;
 
     @Bean
-    public JwtTokenStore tokenStore() {
-        return new JwtTokenStore(tokenEnhancer());
+    public JwtTokenStore tokenStore(JwtAccessTokenConverter tokenEnhancer) {
+        return new JwtTokenStore(tokenEnhancer);
     }
 
     @Bean

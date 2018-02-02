@@ -18,6 +18,14 @@ services:
       - MYSQL_DATABASE=zipkin
     networks:
       - airline
+  mongo:
+    hostname: mongo
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - airline  
+
 networks:
   airline:
     driver: bridge

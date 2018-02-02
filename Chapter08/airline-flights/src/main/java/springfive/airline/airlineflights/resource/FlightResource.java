@@ -20,7 +20,7 @@ import springfive.airline.airlineflights.resource.data.FlightRequest;
 import springfive.airline.airlineflights.service.FlightService;
 
 @RestController
-@RequestMapping("/flights")
+@RequestMapping("/")
 public class FlightResource {
 
   private final FlightService flightService;

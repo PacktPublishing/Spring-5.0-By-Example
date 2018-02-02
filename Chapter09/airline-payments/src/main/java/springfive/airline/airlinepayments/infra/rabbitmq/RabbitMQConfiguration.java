@@ -39,7 +39,7 @@ public class RabbitMQConfiguration {
       @Value("${spring.rabbitmq.host}") String host,
       @Value("${spring.rabbitmq.port}") Integer port,
       @Value("${payment.request-payment-queue}") String requestPaymentQueue,
-      @Value("${payment.response-payment.queue}") String responsePaymentQueue) {
+      @Value("${payment.response-payment-queue}") String responsePaymentQueue) {
     this.pass = pass;
     this.user = user;
     this.host = host;

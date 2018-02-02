@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NonNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import springfive.airline.airlineplanes.resource.data.PlaneRequest;
+import springfive.airline.airlineplanes.domain.resource.data.PlaneRequest;
 
 @Data
 @Document(collection = "planes")

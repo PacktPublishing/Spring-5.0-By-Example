@@ -1,4 +1,4 @@
-package springfive.airline.airlineplanes.resource.data;
+package springfive.airline.airlineplanes.domain.resource.data;
 
 import java.util.Set;
 import lombok.Data;

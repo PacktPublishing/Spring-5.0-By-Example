@@ -1,4 +1,4 @@
-package springfive.airline.airlineplanes.resource;
+package springfive.airline.airlineplanes.domain.resource;
 
 import java.net.URI;
 import javax.validation.Valid;
@@ -16,11 +16,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import springfive.airline.airlineplanes.domain.Plane;
-import springfive.airline.airlineplanes.resource.data.PlaneRequest;
-import springfive.airline.airlineplanes.service.PlaneService;
+import springfive.airline.airlineplanes.domain.resource.data.PlaneRequest;
+import springfive.airline.airlineplanes.domain.service.PlaneService;
 
 @RestController
-@RequestMapping("/planes")
+@RequestMapping("/")
 public class PlaneResource {
 
   private final PlaneService planeService;
@@ -35,10 +35,10 @@ public class PlaneResource {
   }
 
   @GetMapping("/{id}")
-  public Mono<ResponseEntity<Plane>> plane(@PathVariable("id") String id)
-      throws InterruptedException {
-    throw new IllegalArgumentException();
-    }
+  public Mono<ResponseEntity<Plane>> plane(@PathVariable("id") String id) {
+    return this.planeService.plane(id).map(ResponseEntity::ok)
+        .defaultIfEmpty(ResponseEntity.notFound().build());
+  }
 
   @PostMapping
   public Mono<ResponseEntity<Void>> newPlane(

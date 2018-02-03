@@ -1,6 +1,8 @@
 turbine:
   stream:
     port: 8010
+  appConfig: planes,flights,fares,bookings
+  clusterNameExpression: 'default'
 
 spring:
   rabbitmq:

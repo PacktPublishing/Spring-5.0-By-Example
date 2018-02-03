@@ -3,17 +3,12 @@ package springfive.airline.airlineflights.service;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.tuple.Tuple;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClient.RequestHeadersSpec;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import reactor.util.function.Tuples;
 import springfive.airline.airlineflights.domain.Plane;
-import springfive.airline.airlineflights.exception.PlaneNotFoundException;
-
-import java.util.function.BiFunction;
 
 @Service
 public class PlaneService {
@@ -22,19 +17,15 @@ public class PlaneService {
 
   private final String planesService;
 
-  private final String planesServiceApiPath;
-
   private final DiscoveryService discoveryService;
 
   private final TokenService tokenService;
 
   public PlaneService(WebClient webClient, DiscoveryService discoveryService,TokenService tokenService,
-      @Value("${planes.service}") String planesService,
-      @Value("${planes.path}") String planesServiceApiPath) {
+      @Value("${planes.service}") String planesService) {
     this.webClient = webClient;
     this.discoveryService = discoveryService;
     this.planesService = planesService;
-    this.planesServiceApiPath = planesServiceApiPath;
     this.tokenService = tokenService;
   }
 
@@ -47,14 +38,14 @@ public class PlaneService {
   })
   public Mono<Plane> plane(String id) {
     return discoveryService.serviceAddressFor(this.planesService).next()
-            .flatMap(address -> Mono.just(this.webClient.mutate().baseUrl(address + "/" + this.planesServiceApiPath + "/" + id).build().get()))
+            .flatMap(address -> Mono.just(this.webClient.mutate().baseUrl(address + "/" + id).build().get()))
             .flatMap(requestHeadersUriSpec ->
               Flux.combineLatest(Flux.just(requestHeadersUriSpec),Flux.from(tokenService.token()),(reqSpec, token) ->{
                 reqSpec.header("Authorization","Bearer" + token.getToken());
               return reqSpec;
               })
-              .next())
-            .map(WebClient.RequestHeadersSpec::retrieve)
+             .next())
+            .map(RequestHeadersSpec::retrieve)
             .flatMap(eq -> eq.bodyToMono(Plane.class));
   }
 

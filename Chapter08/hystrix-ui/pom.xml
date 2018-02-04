@@ -15,7 +15,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>1.5.9.RELEASE</version>
+    <version>1.5.10.RELEASE</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
@@ -23,7 +23,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
-    <spring-cloud.version>Edgware.SR1</spring-cloud.version>
+    <spring-cloud.version>Edgware.BUILD-SNAPSHOT</spring-cloud.version>
   </properties>
 
   <dependencies>
@@ -69,13 +69,59 @@
   </dependencyManagement>
 
   <build>
+
+    <finalName>hystrix_dashboard</finalName>
+
     <plugins>
+
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
+
+      <plugin>
+        <groupId>io.fabric8</groupId>
+        <artifactId>docker-maven-plugin</artifactId>
+        <version>0.21.0</version>
+        <configuration>
+          <images>
+            <image>
+              <name>springfivebyexample/${project.build.finalName}</name>
+              <build>
+                <from>openjdk:latest</from>
+                <entryPoint>java -Dspring.profiles.active=docker -jar /application/${project.build.finalName}.jar</entryPoint>
+                <assembly>
+                  <basedir>/application</basedir>
+                  <descriptorRef>artifact</descriptorRef>
+                  <inline>
+                    <id>assembly</id>
+                    <files>
+                      <file>
+                        <source>target/${project.build.finalName}.jar</source>
+                      </file>
+                    </files>
+                  </inline>
+                </assembly>
+                <tags>
+                  <tag>latest</tag>
+                </tags>
+                <ports>
+                  <port>50010</port>
+                </ports>
+              </build>
+              <run>
+                <namingStrategy>alias</namingStrategy>
+              </run>
+              <alias>${project.build.finalName}</alias>
+            </image>
+          </images>
+        </configuration>
+      </plugin>
+
     </plugins>
+
   </build>
+
 
   <repositories>
     <repository>
@@ -114,6 +160,5 @@
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
-
 
 </project>

@@ -1,5 +1,7 @@
 package springfive.airline.airlineflights.service;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -40,6 +42,13 @@ public class TokenService {
     this.discoveryService = discoveryService;
   }
 
+  @HystrixCommand(commandKey = "request-token",groupKey = "auth-operations",commandProperties = {
+      @HystrixProperty(name="circuitBreaker.requestVolumeThreshold",value="10"),
+      @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "10"),
+      @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds",value="10000"),
+      @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000"),
+      @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "10000")
+  })
   public Mono<AccessToken> token() {
     val authorizationHeader = Base64Utils.encodeToString((this.clientId + ":" + this.clientSecret).getBytes());
     return discoveryService.serviceAddressFor(this.authService).next().flatMap(address ->

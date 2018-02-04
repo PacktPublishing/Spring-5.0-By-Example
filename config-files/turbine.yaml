@@ -1,6 +1,15 @@
 turbine:
   stream:
     port: 8010
+  appConfig: planes,flights,fares,bookings
+  clusterNameExpression: 'default'
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 eureka:
   client:

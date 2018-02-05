@@ -12,7 +12,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @EnableZuulProxy
 @EnableEurekaClient
 @EnableResourceServer
-
 @SpringBootApplication
 public class AirlineFlightsApplication {
 

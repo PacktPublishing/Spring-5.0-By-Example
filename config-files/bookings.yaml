@@ -1,7 +1,5 @@
-
 server:
-  port: 50009
-  
+  port: 50015
 spring:
   rabbitmq:
     host: localhost
@@ -11,34 +9,34 @@ spring:
   sleuth:
     annotation:
       enabled: true
-  redis:
-    host: localhost
-    port: 6379
+  data:
+    mongodb:
+      database: bookings
+      host: localhost
   oauth2:
     resource:
       userInfoUri: http://localhost:7777/credential
-    
+
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
   instance:
     statusPageUrlPath: /actuator/info
-    healthCheckUrlPath: /actuator/health      
+    healthCheckUrlPath: /actuator/health
     instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-      
-flights:
-  service: FLIGHTS
-  path: flights
-  
-bookings:
-  service: BOOKINGS
-  path: bookings
-  
+planes:
+  service: PLANES
+  path: planes
+  oauth:
+    client_id: 442cf4015509eda9c03e5ca3aceef752
+    client_secret: 4f7ec648a48b9d3fa239b497f7b6b4d8019697bd
+
 auth:
   service: AUTH
   path: /oauth/token
-  
+    
+
 config:
   oauth2:
     privateKey: |

@@ -1,9 +1,9 @@
 package springfive.cms.domain.resources;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import java.util.Arrays;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +20,6 @@ import springfive.cms.domain.models.Category;
 import springfive.cms.domain.service.CategoryService;
 import springfive.cms.domain.vo.CategoryRequest;
 
-/**
- * @author claudioed on 28/10/17. Project cms
- */
 @RestController
 @RequestMapping("/api/category")
 @Api(tags = "category", description = "Category API")

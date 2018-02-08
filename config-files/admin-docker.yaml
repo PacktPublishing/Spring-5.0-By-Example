@@ -1,0 +1,15 @@
+server:
+  port: 50015
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/
+
+spring:
+  boot:
+    admin:
+      discovery:
+        converter:
+          health-endpoint-path: /actuator/health
+          management-context-path: /actuator

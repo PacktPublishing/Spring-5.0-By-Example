@@ -1,0 +1,85 @@
+server:
+  port: 8888
+
+spring:
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+  sleuth:
+    annotation:
+      enabled: true
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
+
+eureka:
+  instance:
+      leaseRenewalIntervalInSeconds: 10
+  client:
+    registryFetchIntervalSeconds: 5
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/
+  instance:
+    statusPageUrlPath: /info
+    healthCheckUrlPath: /health
+
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG
+management:
+  security:
+    enabled: false
+  health:
+    defaults: true
+    sensitive: true
+  endpoints:
+    web:
+      expose: "*"
+    health:
+      show-details: true
+    cors:
+      allowed-origins: "*"
+      allowed-methods: GET,POST 
+
+zuul:
+  routes:
+    planes:
+      path: /api/v1/planes/**
+      sensitiveHeaders: 
+      serviceId: planes
+    flights:
+      path: /api/v1/flights/**
+      sensitiveHeaders: 
+      serviceId: flights
+    fares:
+      path: /api/v1/fares/**
+      sensitiveHeaders: 
+      serviceId: fares
+    passengers:
+      path: /api/v1/passengers/**
+      sensitiveHeaders: 
+      serviceId: passengers
+    payments:
+      path: /api/v1/payments/**
+      sensitiveHeaders: 
+      serviceId: payments
+    auth:
+      path: /api/v1/auth/**
+      sensitiveHeaders: 
+      serviceId: auth    
+
+proxy:
+  auth:
+    routes:
+      planes: oauth2
+      flighst: oauth2
+      fares: oauth2
+      bookings: oauth2

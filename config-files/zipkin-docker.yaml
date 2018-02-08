@@ -1,0 +1,34 @@
+server:
+  port: 9999
+
+spring:
+  rabbitmq:
+    port: 5672
+    host: localhost
+  datasource:
+    schema: classpath:/mysql.sql
+    url: jdbc:mysql://mysql:3306/zipkin?autoReconnect=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    initialize: true
+    continue-on-error: true
+  sleuth:
+    enabled: false
+
+zipkin:
+  storage:
+    type: mysql
+
+logging:
+  level:
+    ROOT: INFO
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery:8761/eureka/
+  instance:
+    statusPageUrlPath: /actuator/info
+    healthCheckUrlPath: /actuator/health
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}

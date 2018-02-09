@@ -3,7 +3,7 @@ server:
 
 eureka:
   instance:
-    hostname: localhost
+    hostname: discovery
     health-check-url-path: /actuator/health
     status-page-url-path: /actuator/info    
   client:
@@ -11,7 +11,7 @@ eureka:
     fetchRegistry: false
 logging:
   level:
-    org.springframework.cloud: 'DEBUG'
+    org.springframework.cloud: 'DEBUG'   
   
 
 

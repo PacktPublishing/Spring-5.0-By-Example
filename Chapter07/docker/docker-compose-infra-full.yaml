@@ -45,6 +45,14 @@ services:
     networks:
       - airline
 
+  discovery:
+    hostname: discovery
+    image: springfivebyexample/discovery
+    ports:
+      - "8761:8761"
+    networks:
+      - airline
+
 networks:
   airline:
     driver: bridge

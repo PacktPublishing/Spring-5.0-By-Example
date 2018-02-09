@@ -10,8 +10,14 @@ spring:
 spring:
   profiles: docker
   application:
-    name: zipkin
+    name: discovery
   cloud:
     config:
       uri: http://config:5000
       label: master
+      fail-fast: true
+      retry:
+        initial-interval: 4000
+        max-attempts: 5
+        multiplier: 2.0
+        max-interval: 6000

@@ -39,6 +39,7 @@ services:
 
   zipkin:
     hostname: zipkin
+    restart: always
     image: springfivebyexample/zipkin
     ports:
       - "9999:9999"
@@ -47,6 +48,7 @@ services:
 
   discovery:
     hostname: discovery
+    restart: always
     image: springfivebyexample/discovery
     ports:
       - "8761:8761"

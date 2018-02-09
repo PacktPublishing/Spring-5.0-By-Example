@@ -3,14 +3,6 @@ spring:
     name: discovery
   cloud:
     config:
+      fail-fast: true
       uri: http://localhost:5000
-      label: master
----
-spring:
-  profiles: docker
-  application:
-    name: discovery
-  cloud:
-    config:
-      uri: http://config:5000
       label: master

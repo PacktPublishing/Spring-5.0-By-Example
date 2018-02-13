@@ -55,6 +55,15 @@ services:
     networks:
       - airline
 
+  mongo:
+    hostname: mongo
+    restart: always
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - airline
+
 networks:
   airline:
     driver: bridge

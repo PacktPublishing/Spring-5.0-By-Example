@@ -1,0 +1,203 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Passenger API's",
+    "version": "1.0.0",
+    "title": "Passenger API's"
+  },
+  "host": "localhost:50000",
+  "basePath": "/",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/passengers": {
+      "get": {
+        "tags": [
+          "passengers crud"
+        ],
+        "description": "List all passengers",
+        "summary": "List all passengers",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "passengers crud"
+        ],
+        "description": "It creates a passenger",
+        "summary": "Create a passenger",
+        "parameters": [
+          {
+            "name": "passenger",
+            "in": "body",
+            "description": "Passenger data in JSON notation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/passenger"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/passengers/{id}": {
+      "get": {
+        "tags": [
+          "passengers crud"
+        ],
+        "description": "It retrieve passenger by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "passenger id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "passengers crud"
+        ],
+        "description": "It deletes a passenger",
+        "summary": "Delete a passenger",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "passenger id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Removed successfully"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "passengers crud"
+        ],
+        "description": "It updates a passenger",
+        "summary": "Update a passenger",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "passenger id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "passenger",
+            "in": "body",
+            "description": "Passenger data in JSON notation.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/passenger"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "passenger": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "fidelity_number": {
+          "type": "string"
+        },
+        "born_date": {
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/definitions/passenger_address"
+        },
+        "contact": {
+          "$ref": "#/definitions/contact"
+        },
+        "documents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/documents"
+          }
+        }
+      }
+    },
+    "passenger_address": {
+      "type": "object",
+      "properties": {
+        "address_1": {
+          "type": "string"
+        },
+        "address_2": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "phone_1": {
+          "type": "string"
+        },
+        "phone_2": {
+          "type": "string"
+        }
+      }
+    },
+    "documents": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

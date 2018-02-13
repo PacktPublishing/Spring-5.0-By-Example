@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: edge
+  cloud:
+    config:
+      uri: http://localhost:5000
+      label: master

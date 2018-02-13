@@ -1,8 +1,8 @@
 twitter:
-  consumer-key: ${consumer-key}
-  consumer-secret: ${consumer-secret}
-  access-token: ${access-token}
-  access-token-secret: ${access-token-secret}
+  consumer-key: ${CONSUMER_KEY}
+  consumer-secret: ${CONSUMER_SECRET}
+  access-token: ${ACCESS_TOKEN}
+  access-token-secret: ${ACCESS_TOKEN_SECRET}
 
 spring:
   rabbitmq:
@@ -34,19 +34,17 @@ management:
 
 spring:
   profiles: docker
+  rabbitmq:
+    host: rabbitmq
+    username: guest
+    password: guest
+    port: 5672
 
 twitter:
   consumer-key: ${CONSUMER_KEY}
   consumer-secret: ${CONSUMER_SECRET}
   access-token: ${ACCESS_TOKEN}
   access-token-secret: ${ACCESS_TOKEN_SECRET}
-
-spring:
-  rabbitmq:
-    host: rabbitmq
-    username: guest
-    password: guest
-    port: 5672
 
 queue:
   twitter: twitter-stream

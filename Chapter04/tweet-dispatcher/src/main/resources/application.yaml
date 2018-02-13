@@ -17,8 +17,6 @@ server:
 
 spring:
   profiles: docker
-
-spring:
   rabbitmq:
     host: rabbitmq
     username: guest

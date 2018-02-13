@@ -83,6 +83,14 @@ services:
     networks:
       - airline
 
+  mail:
+    hostname: mail
+    restart: always
+    image: springfivebyexample/mail
+    ports:
+      - "50050:50050"
+    networks:
+      - airline
 
 networks:
   airline:

@@ -38,7 +38,7 @@ public class PlaneService {
   })
   public Mono<Plane> plane(String id) {
     return discoveryService.serviceAddressFor(this.planesService).next().flatMap(
-        address -> this.webClient.mutate().baseUrl(address + "/" + this.planesServiceApiPath + "/" + id).build().get().retrieve()
+        address -> this.webClient.mutate().baseUrl(address + "/" + id).build().get().retrieve()
             .onStatus(HttpStatus::is4xxClientError, clientResponse ->
                 Mono.error(new PlaneNotFoundException(id))
             ).onStatus(HttpStatus::is5xxServerError, clientResponse ->

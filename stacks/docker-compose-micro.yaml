@@ -1,57 +1,59 @@
 version: '3'
 services:
 
-  config:
-    hostname: config
+  passengers:
+    hostname: passengers
     image: springfivebyexample/config
     ports:
       - "5000:5000"
     networks:
       - airline
 
-  rabbitmq:
-    hostname: rabbitmq
-    image: rabbitmq:3.7.0-management-alpine
+  flights:
+    hostname: flights
+    image: springfivebyexample/flights
     ports:
-      - "5672:5672"
-      - "15672:15672"
+      - "50005:50005"
     networks:
       - airline
 
-  mysql:
-    hostname: mysql
-    image: mysql:5.7.21
+  planes:
+    hostname: planes
+    image: springfivebyexample/planes
     ports:
-      - "3306:3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=zipkin
+      - "50001:50001"
     networks:
       - airline
 
-  redis:
-    hostname: redis
-    image: redis:3.2-alpine
+  bookings:
+    hostname: bookings
+    image: springfivebyexample/bookings
     ports:
-      - "6379:6379"
+      - "50075:50075"
     networks:
       - airline
 
-  zipkin:
-    hostname: zipkin
-    restart: always
-    image: springfivebyexample/zipkin
+  payments:
+    hostname: payments
+    image: springfivebyexample/payments
     ports:
-      - "9999:9999"
+      - "50070:50070"
     networks:
       - airline
 
-  discovery:
-    hostname: discovery
-    restart: always
-    image: springfivebyexample/discovery
+  auth:
+    hostname: auth
+    image: springfivebyexample/auth
     ports:
-      - "8761:8761"
+      - "7777:7777"
+    networks:
+      - airline
+
+  ecommerce:
+    hostname: ecommerce
+    image: springfivebyexample/ecommerce
+    ports:
+      - "50080:50080"
     networks:
       - airline
 

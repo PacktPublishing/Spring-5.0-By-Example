@@ -92,6 +92,15 @@ services:
     networks:
       - airline
 
+  admin:
+    hostname: admin
+    restart: always
+    image: springfivebyexample/admin
+    ports:
+      - "50015:50015"
+    networks:
+      - airline
+
 networks:
   airline:
     driver: bridge

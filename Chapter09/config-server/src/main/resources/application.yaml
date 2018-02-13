@@ -1,0 +1,13 @@
+server:
+  port: 5000
+
+spring:
+  cloud:
+    config:
+      name: config
+      server:
+        git:
+          uri: https://github.com/PacktPublishing/Spring-5.0-By-Example
+          search-paths: config-files*
+  application:
+    name: config

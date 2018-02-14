@@ -16,6 +16,4 @@ public class Booking {
     return this.passengers.stream().filter(seat -> seat.getCategory().getId().equalsIgnoreCase(classId)).count();
   }
 
-
-
 }

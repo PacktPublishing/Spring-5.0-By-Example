@@ -1,0 +1,6 @@
+spring:
+  data:
+    mongodb:
+      database: cms
+      host: mongodb
+      port: 27017

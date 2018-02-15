@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spring Boot Security</title>
+  <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body ng-app="cms">
+
+<!-- Header -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+              aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">CMS</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#users">Users</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#news">News</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Body -->
+<div class="container">
+  <div ui-view></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+
+<script type="text/javascript" src="app/app.js"></script>
+
+<script type="text/javascript" src="app/controllers.js"></script>
+<script type="text/javascript" src="app/services.js"></script>
+
+<script type="text/javascript" src="app/components/categories/category-controller.js"></script>
+<script type="text/javascript" src="app/components/categories/category-service.js"></script>
+
+<script type="text/javascript" src="app/components/news/news-controller.js"></script>
+<script type="text/javascript" src="app/components/news/news-service.js"></script>
+
+<script type="text/javascript" src="app/components/users/user-controller.js"></script>
+<script type="text/javascript" src="app/components/users/user-service.js"></script>
+
+</body>
+</html>

@@ -76,6 +76,22 @@ services:
     networks:
       - airline
 
+  auth:
+    hostname: auth
+    image: springfivebyexample/auth
+    ports:
+      - "7777:7777"
+    networks:
+      - airline
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 512M
+        reservations:
+          cpus: '1.0'
+          memory: 256M
+
 networks:
   airline:
     driver: bridge

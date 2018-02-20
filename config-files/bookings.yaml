@@ -25,6 +25,7 @@ eureka:
     statusPageUrlPath: /actuator/info
     healthCheckUrlPath: /actuator/health
     instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
 planes:
   service: PLANES
   path: planes
@@ -35,7 +36,9 @@ planes:
 auth:
   service: AUTH
   path: /oauth/token
-    
+
+fares:
+  service: FARES
 
 config:
   oauth2:

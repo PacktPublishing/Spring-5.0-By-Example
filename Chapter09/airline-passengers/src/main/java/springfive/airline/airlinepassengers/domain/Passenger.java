@@ -1,6 +1,5 @@
 package springfive.airline.airlinepassengers.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Set;
@@ -19,7 +18,6 @@ public class Passenger {
   private static final transient DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
   @Id
-  @JsonIgnore
   String id;
 
   String name;

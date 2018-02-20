@@ -20,7 +20,7 @@ import springfive.airline.airlinepassengers.domain.resource.data.PassengerReques
 import springfive.airline.airlinepassengers.domain.service.PassengerService;
 
 @RestController
-@RequestMapping("/passengers")
+@RequestMapping("/")
 public class PassengerResource {
 
   private final PassengerService passengerService;

@@ -1,5 +1,6 @@
 package springfive.airline.airlinebooking.domain;
 
+import java.util.Objects;
 import java.util.Set;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -18,5 +19,9 @@ public class Booking {
   Set<Seat> seats;
 
   Fare fare;
+
+  public Long booked(){
+    return Objects.isNull(seats) ? 0L : seats.size();
+  }
 
 }

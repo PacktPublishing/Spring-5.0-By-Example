@@ -1,4 +1,4 @@
-package springfive.airline.airlinebooking.domain.infra.web;
+package springfive.airline.airlinebooking.infra.web;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

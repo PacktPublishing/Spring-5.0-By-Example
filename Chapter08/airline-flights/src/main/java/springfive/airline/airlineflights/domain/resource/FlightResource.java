@@ -16,6 +16,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import springfive.airline.airlineflights.domain.Flight;
+import springfive.airline.airlineflights.domain.resource.data.FlightQuery;
 import springfive.airline.airlineflights.domain.resource.data.FlightRequest;
 import springfive.airline.airlineflights.domain.service.FlightService;
 
@@ -61,6 +62,11 @@ public class FlightResource {
     return this.flightService.flight(id).flatMap(data -> this.flightService.update(id,flightRequest)
             .then(Mono.just(ResponseEntity.ok().build())))
             .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+  }
+
+  @PostMapping("/query")
+  public Flux<Flight> flights(@Valid @RequestBody FlightQuery query){
+    return this.flightService.flightBy(query);
   }
 
 }

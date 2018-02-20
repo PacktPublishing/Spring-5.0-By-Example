@@ -74,7 +74,11 @@ zuul:
     auth:
       path: /api/v1/auth/**
       sensitiveHeaders: 
-      serviceId: auth    
+      serviceId: auth
+    bookings:
+      path: /api/v1/bookings/**
+      sensitiveHeaders:
+      serviceId: bookings
 
 proxy:
   auth:

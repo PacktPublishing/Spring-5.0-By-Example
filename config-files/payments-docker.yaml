@@ -25,7 +25,8 @@ eureka:
   instance:
     statusPageUrlPath: /actuator/info
     healthCheckUrlPath: /actuator/health
-    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}    
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
 management:
   security:
     enabled: false

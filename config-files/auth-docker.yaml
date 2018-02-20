@@ -6,8 +6,9 @@ eureka:
     serviceUrl:
       defaultZone: http://discovery:8761/eureka/
   instance:
-    statusPageUrlPath: /actuator/info
-    healthCheckUrlPath: /actuator/health
+    statusPageUrlPath: /info
+    healthCheckUrlPath: /health
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 spring:
   rabbitmq:

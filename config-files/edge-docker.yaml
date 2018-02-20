@@ -29,6 +29,7 @@ eureka:
   instance:
     statusPageUrlPath: /info
     healthCheckUrlPath: /health
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 logging:
   level:

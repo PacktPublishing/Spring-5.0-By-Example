@@ -63,8 +63,7 @@ public class FareService {
               throw new IllegalArgumentException("Invalid class for tax");
             }
           }).collect(toSet());
-
-          return Mono.just(Fare.builder().id(UUID.randomUUID().toString()).flight(data.getFlight())
+          return this.fareRepository.create(Fare.builder().id(UUID.randomUUID().toString()).flight(data.getFlight())
               .validUntil(LocalDateTime.now().plusMinutes(15)).reservations(reservations).build());
         });
   }

@@ -1,0 +1,81 @@
+version: '3'
+services:
+
+  config:
+    hostname: config
+    image: springfivebyexample/config
+    ports:
+      - "5000:5000"
+    networks:
+      - airline
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 512M
+        reservations:
+          cpus: '1.0'
+          memory: 256M
+
+  rabbitmq:
+    hostname: rabbitmq
+    image: rabbitmq:3.7.0-management-alpine
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - airline
+
+  redis:
+    hostname: redis
+    image: redis:3.2-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - airline
+
+  discovery:
+    hostname: discovery
+    restart: always
+    image: springfivebyexample/discovery
+    ports:
+      - "8761:8761"
+    networks:
+      - airline
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 512M
+        reservations:
+          cpus: '1.0'
+          memory: 256M
+
+  edge:
+    hostname: edge
+    restart: always
+    image: springfivebyexample/edge
+    ports:
+      - "8888:8888"
+    networks:
+      - airline
+    deploy:
+      resources:
+        limits:
+          cpus: '1.5'
+          memory: 512M
+        reservations:
+          cpus: '1.0'
+          memory: 256M
+
+  mongo:
+    hostname: mongo
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - airline
+
+networks:
+  airline:
+    driver: bridge

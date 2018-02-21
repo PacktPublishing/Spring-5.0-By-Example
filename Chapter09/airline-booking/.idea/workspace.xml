@@ -2,21 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef2323d8-6651-4f95-bd69-f75e2287e740" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/../../Chapter08/airline-flights/src/main/java/springfive/airline/airlineflights/domain/resource/data/FlightQuery.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/springfive/airline/airlinebooking/domain/service/data/TotalBooked.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/springfive/airline/airlinebooking/oauth/AccessToken.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/springfive/airline/airlinebooking/oauth/OAuthTokenConfiguration.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/.gitignore" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/../../Chapter08/airline-flights/src/main/java/springfive/airline/airlineflights/domain/repository/FlightRepository.java" afterPath="$PROJECT_DIR$/../../Chapter08/airline-flights/src/main/java/springfive/airline/airlineflights/domain/repository/FlightRepository.java" />
-      <change beforePath="$PROJECT_DIR$/../../Chapter08/airline-flights/src/main/java/springfive/airline/airlineflights/domain/resource/FlightResource.java" afterPath="$PROJECT_DIR$/../../Chapter08/airline-flights/src/main/java/springfive/airline/airlineflights/domain/resource/FlightResource.java" />
-      <change beforePath="$PROJECT_DIR$/../../Chapter08/airline-flights/src/main/java/springfive/airline/airlineflights/domain/service/FlightService.java" afterPath="$PROJECT_DIR$/../../Chapter08/airline-flights/src/main/java/springfive/airline/airlineflights/domain/service/FlightService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/domain/booking/TotalBooked.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/domain/flight/Airport.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/domain/flight/Class.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/domain/flight/Connection.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/domain/flight/Flight.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/domain/flight/Plane.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/domain/flight/PlaneModel.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/domain/flight/RegularPrice.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/domain/service/BookingService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/domain/service/DiscoveryService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/domain/service/FlightSearchService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/domain/service/FlightService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/domain/service/TokenService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/infra/oauth/AccessToken.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/infra/oauth/Credentials.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/infra/oauth/CredentialsProducer.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/infra/oauth/OAuthTokenConfiguration.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/infra/web/WebClientProducer.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/springfive/airline/airlinebooking/AirlineBookingApplication.java" afterPath="$PROJECT_DIR$/src/main/java/springfive/airline/airlinebooking/AirlineBookingApplication.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/springfive/airline/airlinebooking/domain/Booking.java" afterPath="$PROJECT_DIR$/src/main/java/springfive/airline/airlinebooking/domain/Booking.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/springfive/airline/airlinebooking/domain/infra/web/WebClientProducer.java" afterPath="$PROJECT_DIR$/src/main/java/springfive/airline/airlinebooking/infra/web/WebClientProducer.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/springfive/airline/airlinebooking/domain/resource/BookingResource.java" afterPath="$PROJECT_DIR$/src/main/java/springfive/airline/airlinebooking/domain/resource/BookingResource.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/springfive/airline/airlinebooking/domain/service/BookingService.java" afterPath="$PROJECT_DIR$/src/main/java/springfive/airline/airlinebooking/domain/service/BookingService.java" />
+      <change beforePath="$PROJECT_DIR$/../airline-ecommerce/pom.xml" afterPath="$PROJECT_DIR$/../airline-ecommerce/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/domain/FlightSearch.java" afterPath="$PROJECT_DIR$/../airline-ecommerce/src/main/java/springfive/airline/airlineecommerce/domain/FlightSearch.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -291,7 +297,29 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="airlinebooking" type="462c0819:PsiDirectoryNode" />
               <item name="domain" type="462c0819:PsiDirectoryNode" />
+              <item name="resource" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="airline-booking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="airline-booking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="airlinebooking" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="airline-booking" type="b2602c69:ProjectViewProjectNode" />
+              <item name="airline-booking" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="airlinebooking" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="airline-booking" type="b2602c69:ProjectViewProjectNode" />
@@ -475,7 +503,7 @@
       <workItem from="1518563009147" duration="5000" />
       <workItem from="1519088337277" duration="6070000" />
       <workItem from="1519167533840" duration="944000" />
-      <workItem from="1519170010010" duration="1050000" />
+      <workItem from="1519170010010" duration="2670000" />
     </task>
     <task id="LOCAL-00001" summary="booking draft">
       <created>1516480519391</created>
@@ -491,15 +519,21 @@
       <option name="project" value="LOCAL" />
       <updated>1516534713116</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="query draft">
+      <created>1519171092153</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1519171092154</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15982000" />
+    <option name="totallyTimeSpent" value="17602000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1883" y="-10" width="1197" height="741" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -513,7 +547,7 @@
       <window_info id="Graph Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28484848" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28484848" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -572,7 +606,8 @@
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="booking draft" />
-    <option name="LAST_COMMIT_MESSAGE" value="booking draft" />
+    <MESSAGE value="query draft" />
+    <option name="LAST_COMMIT_MESSAGE" value="query draft" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

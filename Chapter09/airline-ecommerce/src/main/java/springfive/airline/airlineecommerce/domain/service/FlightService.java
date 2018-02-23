@@ -14,6 +14,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import springfive.airline.airlineecommerce.domain.FlightSearch;
 import springfive.airline.airlineecommerce.domain.flight.Flight;
+import springfive.airline.airlineecommerce.domain.service.data.AvailableSeats;
 import springfive.airline.airlineecommerce.infra.oauth.Credentials;
 
 @Service
@@ -58,6 +59,27 @@ public class FlightService {
                 .next())
         .map(RequestHeadersSpec::retrieve)
         .flatMapMany(res -> res.bodyToFlux(Flight.class));
+  }
+
+  @HystrixCommand(commandKey = "available-seats-query",groupKey = "airline-flights-query",commandProperties = {
+      @HystrixProperty(name="circuitBreaker.requestVolumeThreshold",value="10"),
+      @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "10"),
+      @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds",value="10000"),
+      @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "800"),
+      @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "10000")
+  })
+  public Mono<AvailableSeats> availableSeats(@NonNull String flightId){
+    return discoveryService.serviceAddressFor(this.flightsService).next()
+        .flatMap(address -> Mono
+            .just(this.webClient.mutate().baseUrl(address +"/" + flightId+ "/available").build().get()))
+        .flatMap(requestHeadersUriSpec ->
+            Flux.combineLatest(Flux.just(requestHeadersUriSpec),Flux.from(tokenService.token(this.flightsCredentials)),(reqSpec, token) ->{
+              reqSpec.header("Authorization","Bearer" + token.getToken());
+              return reqSpec;
+            })
+                .next())
+        .map(RequestHeadersSpec::retrieve)
+        .flatMap(res -> res.bodyToMono(AvailableSeats.class));
   }
 
 }

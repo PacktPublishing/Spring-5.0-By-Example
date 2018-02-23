@@ -8,18 +8,15 @@ import springfive.airline.airlineecommerce.domain.flight.Flight;
 @Service
 public class FlightSearchService {
 
-  private final BookingService bookingService;
-
   private final FlightService flightService;
 
-  public FlightSearchService(BookingService bookingService, FlightService flightService) {
-    this.bookingService = bookingService;
+  public FlightSearchService(FlightService flightService) {
     this.flightService = flightService;
   }
 
   public Flux<Flight> flights(FlightSearch query){
     return this.flightService.search(query)
-        .filterWhen(flight -> this.bookingService.totalBooked(flight.getId()).map(el -> el.getTotal() > 0));
+        .filterWhen(flight -> this.flightService.availableSeats(flight.getId()).map(el -> el.getAvailable() > 0));
   }
 
 }

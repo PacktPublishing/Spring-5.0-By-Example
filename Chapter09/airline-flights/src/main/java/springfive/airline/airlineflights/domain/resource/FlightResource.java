@@ -19,6 +19,7 @@ import springfive.airline.airlineflights.domain.Flight;
 import springfive.airline.airlineflights.domain.resource.data.FlightQuery;
 import springfive.airline.airlineflights.domain.resource.data.FlightRequest;
 import springfive.airline.airlineflights.domain.service.FlightService;
+import springfive.airline.airlineflights.domain.service.data.AvailableSeats;
 
 @RestController
 @RequestMapping("/")
@@ -67,6 +68,11 @@ public class FlightResource {
   @PostMapping("/query")
   public Flux<Flight> flights(@Valid @RequestBody FlightQuery query){
     return this.flightService.flightBy(query);
+  }
+
+  @GetMapping("/{id}/available")
+  public Mono<AvailableSeats> availableSeats(@PathVariable("id") String id){
+    return this.flightService.availableSeats(id);
   }
 
 }

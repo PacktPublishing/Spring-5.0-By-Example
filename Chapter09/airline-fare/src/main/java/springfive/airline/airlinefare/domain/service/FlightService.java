@@ -1,5 +1,7 @@
 package springfive.airline.airlinefare.domain.service;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -24,7 +26,7 @@ public class FlightService {
   private final WebClient webClient;
 
   public FlightService(DiscoveryService discoveryService,
-      @Value("${flight.service}") String flightService,
+      @Value("${flights.service}") String flightService,
       TokenService tokenService,
       @Qualifier("flightsCredentials") Credentials credentials,
       WebClient webClient) {
@@ -35,6 +37,13 @@ public class FlightService {
     this.webClient = webClient;
   }
 
+  @HystrixCommand(commandKey = "flight-by-id",groupKey = "airline-fare",commandProperties = {
+      @HystrixProperty(name="circuitBreaker.requestVolumeThreshold",value="10"),
+      @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "10"),
+      @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds",value="10000"),
+      @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "800"),
+      @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "10000")
+  })
   public Mono<Flight> flight(String id) {
     return discoveryService.serviceAddressFor(this.flightService).next()
         .flatMap(address -> Mono.just(this.webClient.mutate().baseUrl(address + "/" + id).build().get()))

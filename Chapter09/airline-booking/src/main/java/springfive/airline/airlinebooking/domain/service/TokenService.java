@@ -11,16 +11,13 @@ import org.springframework.util.Base64Utils;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
-import springfive.airline.airlinebooking.oauth.AccessToken;
+import springfive.airline.airlinebooking.infra.oauth.AccessToken;
+import springfive.airline.airlinebooking.infra.oauth.Credentials;
 
 @Service
 public class TokenService {
 
   private final WebClient webClient;
-
-  private final String clientId;
-
-  private final String clientSecret;
 
   private final String authService;
 
@@ -29,14 +26,10 @@ public class TokenService {
   private final DiscoveryService discoveryService;
 
   public TokenService(WebClient webClient,
-      @Value("${fares.oauth.client_id}") String clientId,
-      @Value("${fares.oauth.client_secret}") String clientSecret,
       @Value("${auth.service}") String authService,
       @Value("${auth.path}") String authServiceApiPath,
       DiscoveryService discoveryService) {
     this.webClient = webClient;
-    this.clientId = clientId;
-    this.clientSecret = clientSecret;
     this.authService = authService;
     this.authServiceApiPath = authServiceApiPath;
     this.discoveryService = discoveryService;
@@ -49,8 +42,8 @@ public class TokenService {
       @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000"),
       @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "10000")
   })
-  public Mono<AccessToken> token() {
-    val authorizationHeader = Base64Utils.encodeToString((this.clientId + ":" + this.clientSecret).getBytes());
+  public Mono<AccessToken> token(Credentials credentials) {
+    val authorizationHeader = Base64Utils.encodeToString((credentials.getClientId() + ":" + credentials.getClientSecret()).getBytes());
     return discoveryService.serviceAddressFor(this.authService).next().flatMap(address ->
         this.webClient.mutate().baseUrl(address + "/" + this.authServiceApiPath).build()
         .post()

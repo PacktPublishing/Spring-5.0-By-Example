@@ -1,4 +1,4 @@
-package springfive.airline.airlinebooking.oauth;
+package springfive.airline.airlinebooking.infra.oauth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

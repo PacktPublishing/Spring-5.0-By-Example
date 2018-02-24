@@ -25,7 +25,6 @@ public class CredentialsProducer {
     this.bookingsClientSecret = bookingsClientSecret;
   }
 
-
   @Bean("flightsCredentials")
   public Credentials flights(){
     return Credentials.builder().clientId(this.flightsClientId).clientSecret(this.flightsClientSecret).build();

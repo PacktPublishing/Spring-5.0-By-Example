@@ -32,15 +32,15 @@ planes:
     client_id: 442cf4015509eda9c03e5ca3aceef752
     client_secret: 4f7ec648a48b9d3fa239b497f7b6b4d8019697bd
 
-auth:
-  service: AUTH
-  path: /oauth/token
-
 fares:
   service: FARES
   oauth:
-    client_id: 442cf4015509eda9c03e5ca3aceef752
-    client_secret: 4f7ec648a48b9d3fa239b497f7b6b4d8019697bd
+    client_id: 47d35bda81f57a8eb8f85a410e18001b
+    client_secret: e186b815cfc1a9988030a21ad8f32d8a6559f3b8
+
+auth:
+  service: AUTH
+  path: /oauth/token
 
 config:
   oauth2:

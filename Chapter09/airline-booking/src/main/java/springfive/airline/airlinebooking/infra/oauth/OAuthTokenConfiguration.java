@@ -1,4 +1,4 @@
-package springfive.airline.airlinebooking.oauth;
+package springfive.airline.airlinebooking.infra.oauth;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

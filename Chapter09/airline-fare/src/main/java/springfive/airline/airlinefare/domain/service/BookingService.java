@@ -2,6 +2,8 @@ package springfive.airline.airlinefare.domain.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -39,6 +41,13 @@ public class BookingService {
     this.credentials = credentials;
   }
 
+  @HystrixCommand(commandKey = "bookings-by-flight-id",groupKey = "airline-fare",commandProperties = {
+      @HystrixProperty(name="circuitBreaker.requestVolumeThreshold",value="10"),
+      @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "10"),
+      @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds",value="10000"),
+      @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "800"),
+      @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "10000")
+  })
   public Mono<Set<Booking>> bookingOfFlight(String bookingId) {
     return discoveryService.serviceAddressFor(this.bookingService).next()
         .flatMap(address -> Mono.just(this.webClient.mutate().baseUrl(address + "/" + bookingId).build().get()))

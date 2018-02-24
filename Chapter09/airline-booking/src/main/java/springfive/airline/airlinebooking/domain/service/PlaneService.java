@@ -17,17 +17,13 @@ public class PlaneService {
 
   private final String planesService;
 
-  private final String planesServiceApiPath;
-
   private final DiscoveryService discoveryService;
 
   public PlaneService(WebClient webClient, DiscoveryService discoveryService,
-      @Value("${planes.service}") String planesService,
-      @Value("${planes.path}") String planesServiceApiPath) {
+      @Value("${planes.service}") String planesService) {
     this.webClient = webClient;
     this.discoveryService = discoveryService;
     this.planesService = planesService;
-    this.planesServiceApiPath = planesServiceApiPath;
   }
 
   @HystrixCommand(commandKey = "plane-by-id", groupKey = "airline-flights", commandProperties = {

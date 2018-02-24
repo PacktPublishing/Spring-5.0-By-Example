@@ -2,6 +2,7 @@ package springfive.airline.airlineflights.domain.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -9,6 +10,7 @@ import org.springframework.web.reactive.function.client.WebClient.RequestHeaders
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import springfive.airline.airlineflights.domain.Plane;
+import springfive.airline.airlineflights.infra.oauth.Credentials;
 
 @Service
 public class PlaneService {
@@ -21,12 +23,17 @@ public class PlaneService {
 
   private final TokenService tokenService;
 
-  public PlaneService(WebClient webClient, DiscoveryService discoveryService,TokenService tokenService,
-      @Value("${planes.service}") String planesService) {
+  private final Credentials credentials;
+
+  public PlaneService(WebClient webClient, DiscoveryService discoveryService,
+      TokenService tokenService,
+      @Value("${planes.service}") String planesService,
+      @Qualifier("planesCredentials") Credentials credentials) {
     this.webClient = webClient;
     this.discoveryService = discoveryService;
     this.planesService = planesService;
     this.tokenService = tokenService;
+    this.credentials = credentials;
   }
 
   @HystrixCommand(commandKey = "plane-by-id",groupKey = "airline-flights",fallbackMethod = "fallback",commandProperties = {
@@ -40,7 +47,7 @@ public class PlaneService {
     return discoveryService.serviceAddressFor(this.planesService).next()
             .flatMap(address -> Mono.just(this.webClient.mutate().baseUrl(address + "/" + id).build().get()))
             .flatMap(requestHeadersUriSpec ->
-              Flux.combineLatest(Flux.just(requestHeadersUriSpec),Flux.from(tokenService.token()),(reqSpec, token) ->{
+              Flux.combineLatest(Flux.just(requestHeadersUriSpec),Flux.from(tokenService.token(this.credentials)),(reqSpec, token) ->{
                 reqSpec.header("Authorization","Bearer" + token.getToken());
               return reqSpec;
               })

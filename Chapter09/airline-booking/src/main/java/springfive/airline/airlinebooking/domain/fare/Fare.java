@@ -1,5 +1,6 @@
 package springfive.airline.airlinebooking.domain.fare;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Set;
 import lombok.Builder;
@@ -18,6 +19,8 @@ public class Fare {
   Set<Reservation> reservations;
 
   Flight flight;
+
+  BigDecimal total;
 
   @Builder
   public static Fare newFare(String id,LocalDateTime validUntil,Set<Reservation> reservations,Flight flight){

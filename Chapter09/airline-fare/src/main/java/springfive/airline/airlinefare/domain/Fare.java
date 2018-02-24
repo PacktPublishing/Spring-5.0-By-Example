@@ -1,7 +1,9 @@
 package springfive.airline.airlinefare.domain;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Set;
+import java.util.stream.Stream;
 import lombok.Builder;
 import lombok.Data;
 
@@ -27,6 +29,11 @@ public class Fare {
     fare.reservations = reservations;
     fare.flight = flight;
     return fare;
+  }
+
+  public BigDecimal getTotal(){
+    return this.reservations.stream().map(res -> res.price)
+        .reduce(BigDecimal.ZERO, BigDecimal::add);
   }
 
 }

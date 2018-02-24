@@ -2,6 +2,7 @@ package springfive.airline.airlineflights.domain.service;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -9,6 +10,7 @@ import org.springframework.web.reactive.function.client.WebClient.RequestHeaders
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import springfive.airline.airlineflights.domain.service.data.TotalBooked;
+import springfive.airline.airlineflights.infra.oauth.Credentials;
 
 @Service
 public class BookingService {
@@ -21,13 +23,17 @@ public class BookingService {
 
   private final TokenService tokenService;
 
+  private final Credentials credentials;
+
   public BookingService(WebClient webClient, DiscoveryService discoveryService,
       @Value("${bookings.service}") String bookingsService,
-      TokenService tokenService) {
+      TokenService tokenService,
+      @Qualifier("bookingsCredentials") Credentials credentials) {
     this.webClient = webClient;
     this.discoveryService = discoveryService;
     this.bookingsService = bookingsService;
     this.tokenService = tokenService;
+    this.credentials = credentials;
   }
 
   @HystrixCommand(commandKey = "available-seats", groupKey = "airline-flights", commandProperties = {
@@ -41,7 +47,7 @@ public class BookingService {
     return discoveryService.serviceAddressFor(this.bookingsService).next()
         .flatMap(address -> Mono.just(this.webClient.mutate().baseUrl(address + "/flights" + flightId).build().get()))
         .flatMap(requestHeadersUriSpec ->
-            Flux.combineLatest(Flux.just(requestHeadersUriSpec),Flux.from(tokenService.token()),(reqSpec, token) ->{
+            Flux.combineLatest(Flux.just(requestHeadersUriSpec),Flux.from(tokenService.token(this.credentials)),(reqSpec, token) ->{
               reqSpec.header("Authorization","Bearer" + token.getToken());
               return reqSpec;
             })
@@ -49,6 +55,5 @@ public class BookingService {
         .map(RequestHeadersSpec::retrieve)
         .flatMap(eq -> eq.bodyToMono(TotalBooked.class));
   }
-
 
 }

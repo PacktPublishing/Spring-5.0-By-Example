@@ -14,4 +14,9 @@ public class Plane {
     return seats.stream().filter(seat -> seat.category.id.equalsIgnoreCase(classId)).count();
   }
 
+  public boolean exist(Seat seat){
+    return this.seats.stream().anyMatch(s -> s.equals(seat));
+
+  }
+
 }

@@ -9,7 +9,7 @@ import reactor.core.publisher.Mono;
 import springfive.airline.airlinebooking.domain.fare.Fare;
 
 @Service
-public class FareService {
+public class FlightService {
 
   private final DiscoveryService discoveryService;
 
@@ -19,7 +19,7 @@ public class FareService {
 
   private final TokenService tokenService;
 
-  public FareService(DiscoveryService discoveryService,
+  public FlightService(DiscoveryService discoveryService,
       @Value("${fares.service}") String fareService,
       WebClient webClient,
       TokenService tokenService) {

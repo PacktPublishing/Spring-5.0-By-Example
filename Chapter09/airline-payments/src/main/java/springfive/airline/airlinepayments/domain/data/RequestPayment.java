@@ -10,16 +10,26 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PaymentResponse {
-
-  String id;
+public class RequestPayment {
 
   String bookingId;
 
-  String transactionId;
+  FlightInfo flightInfo;
+
+  String createdAt;
 
   BigDecimal value;
 
-  PaymentStatus status;
+  @Data
+  @Builder
+  @NoArgsConstructor
+  @AllArgsConstructor
+  public static class FlightInfo{
+
+    String id;
+
+    String number;
+
+  }
 
 }

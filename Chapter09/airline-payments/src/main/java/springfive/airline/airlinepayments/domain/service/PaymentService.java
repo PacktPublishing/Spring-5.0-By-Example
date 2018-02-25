@@ -1,30 +1,44 @@
 package springfive.airline.airlinepayments.domain.service;
 
-import org.springframework.beans.factory.annotation.Value;
+import java.time.LocalDateTime;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
-import reactor.rabbitmq.Sender;
+import springfive.airline.airlinepayments.domain.Amount;
+import springfive.airline.airlinepayments.domain.Booking;
 import springfive.airline.airlinepayments.domain.Payment;
-import springfive.airline.airlinepayments.domain.data.PaymentRequest;
+import springfive.airline.airlinepayments.domain.data.PaymentResponse;
+import springfive.airline.airlinepayments.domain.data.PaymentStatus;
+import springfive.airline.airlinepayments.domain.data.RequestPayment;
 
 @Service
 public class PaymentService {
 
   private final PaymentRegister paymentRegister;
 
-  private final Sender sender;
+  private final PaymentResponseService paymentResponseService;
 
-  private final String responsePaymentQueue;
+  private final PaymentsFinder paymentsFinder;
 
-  public PaymentService(PaymentRegister paymentRegister, Sender sender,
-      @Value("${payment.response-payment-queue}") String responsePaymentQueue) {
+  public PaymentService(PaymentRegister paymentRegister,
+      PaymentResponseService paymentResponseService,
+      PaymentsFinder paymentsFinder) {
     this.paymentRegister = paymentRegister;
-    this.sender = sender;
-    this.responsePaymentQueue = responsePaymentQueue;
+    this.paymentResponseService = paymentResponseService;
+    this.paymentsFinder = paymentsFinder;
   }
 
-  public Mono<Payment> pay(PaymentRequest paymentRequest){
-    return Mono.empty();
+  public Mono<Payment> pay(RequestPayment paymentRequest){
+    final Payment payment = Payment.builder()
+        .amount(Amount.builder().value(paymentRequest.getValue()).build())
+        .booking(Booking.builder().id(paymentRequest.getBookingId()).build())
+        .status(PaymentStatus.APPROVED.toString())
+        .createdAt(LocalDateTime.now()).build();
+    return this.paymentRegister.create(payment).flatMap(data -> {
+      final PaymentResponse response = PaymentResponse.builder().bookingId(data.getBooking().getId())
+          .id(data.getId()).status(PaymentStatus.APPROVED)
+          .transactionId(data.getId()).value(data.getAmount().getValue()).build();
+      return paymentResponseService.responsePayment(response);
+    }).flatMap(response -> paymentsFinder.payments(response.getId()));
   }
 
 }

@@ -42,9 +42,16 @@ management:
       allowed-origins: "*"
       allowed-methods: GET,POST
       
-payment:
-  request-payment-queue: request-payment
-  response-payment-queue: response-payment
+amqp:
+  payments:
+    queue:
+      request: request_payment_queue
+      response: response_payment_queue
+    exchange:
+      payment: payments
+    key:
+      request: request_payment
+      response: response_payment
   
 flight:
   service: flights

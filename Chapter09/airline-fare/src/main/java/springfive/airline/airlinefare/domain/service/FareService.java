@@ -13,7 +13,7 @@ import reactor.core.publisher.Mono;
 import springfive.airline.airlinefare.domain.Booking;
 import springfive.airline.airlinefare.domain.Fare;
 import springfive.airline.airlinefare.domain.FareQuery;
-import springfive.airline.airlinefare.domain.Flight;
+import springfive.airline.airlinefare.domain.flight.Flight;
 import springfive.airline.airlinefare.domain.Reservation;
 import springfive.airline.airlinefare.domain.rules.FareContext;
 import springfive.airline.airlinefare.domain.rules.OccupationRule;
@@ -56,14 +56,15 @@ public class FareService {
             if (regularPrice.isPresent()) {
               final BigDecimal additionalTaxes = occupationTax.divide(BigDecimal.valueOf(100))
                   .add(timeTax.divide(BigDecimal.valueOf(100)));
-              final BigDecimal total = regularPrice.get().multiply(additionalTaxes);
+
+              final BigDecimal additionalValue = regularPrice.get().multiply(additionalTaxes);
               return Reservation.builder().passenger(element.getPassenger()).seat(element.getSeat())
-                  .price(total).build();
+                  .price(regularPrice.get().add(additionalValue)).build();
             } else {
               throw new IllegalArgumentException("Invalid class for tax");
             }
           }).collect(toSet());
-          return Mono.just(Fare.builder().id(UUID.randomUUID().toString()).flight(data.getFlight())
+          return Mono.just(Fare.builder().id(UUID.randomUUID().toString()).flight(data.flightInfo())
               .validUntil(LocalDateTime.now().plusMinutes(15)).reservations(reservations).build());
         });
   }

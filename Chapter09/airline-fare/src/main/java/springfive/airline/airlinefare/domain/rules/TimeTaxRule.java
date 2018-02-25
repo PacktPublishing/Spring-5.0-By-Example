@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Value;
-import springfive.airline.airlinefare.domain.Flight;
+import springfive.airline.airlinefare.domain.flight.Flight;
 import springfive.airline.airlinefare.domain.rules.spec.time.OneMonth;
 import springfive.airline.airlinefare.domain.rules.spec.time.ThreeMonths;
 import springfive.airline.airlinefare.domain.rules.spec.time.TwoMonths;
@@ -18,7 +18,7 @@ public class TimeTaxRule implements Rule<Flight> {
   @Override
   public BigDecimal tax(Flight flight) {
     if (new ThreeMonths(this.requestedAt).isSatisfiedBy(flight)) {
-      return BigDecimal.valueOf(1);
+      return BigDecimal.valueOf(0);
     } else if (new TwoMonths(this.requestedAt).isSatisfiedBy(flight)) {
       return BigDecimal.valueOf(10);
     } else if (new OneMonth(this.requestedAt).isSatisfiedBy(flight)) {

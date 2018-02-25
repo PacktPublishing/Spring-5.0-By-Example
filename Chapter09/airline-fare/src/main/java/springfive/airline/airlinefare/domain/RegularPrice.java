@@ -8,6 +8,7 @@ import lombok.Data;
 public class RegularPrice {
 
   @JsonProperty("target_class")
+  public
   Class targetClass;
 
   BigDecimal price;

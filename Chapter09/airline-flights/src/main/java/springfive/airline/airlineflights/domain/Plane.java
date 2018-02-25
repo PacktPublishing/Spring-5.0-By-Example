@@ -1,6 +1,5 @@
 package springfive.airline.airlineflights.domain;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Objects;
 import java.util.Set;
 import lombok.Data;

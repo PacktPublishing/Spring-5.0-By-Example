@@ -25,7 +25,7 @@ public class AbstractBandRule extends AbstractSpecification<Plane>{
   public boolean isSatisfiedBy(Plane plane) {
     Long totalSeats = plane.seatsOfClass(reservation.getSeat().categoryId());
     Long occupiedSeats = bookingsOfClass(reservation.getSeat().categoryId());
-    final Long percentage = totalSeats / occupiedSeats;
+    final Long percentage = occupiedSeats == 0 ? 0 : totalSeats / occupiedSeats;
     return this.targetBand.inside(Double.valueOf(percentage.toString()));
   }
 

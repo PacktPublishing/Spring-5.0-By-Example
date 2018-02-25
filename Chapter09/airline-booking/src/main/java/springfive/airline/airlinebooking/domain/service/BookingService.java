@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import springfive.airline.airlinebooking.domain.Booking;
+import springfive.airline.airlinebooking.domain.Payment;
 import springfive.airline.airlinebooking.domain.Plane;
 import springfive.airline.airlinebooking.domain.exception.AlreadyBookedException;
 import springfive.airline.airlinebooking.domain.exception.SeatNotAvailableOnPlaneException;
 import springfive.airline.airlinebooking.domain.fare.Fare;
 import springfive.airline.airlinebooking.domain.fare.Reservation;
+import springfive.airline.airlinebooking.domain.payment.PaymentResponse;
 import springfive.airline.airlinebooking.domain.payment.RequestPayment;
 import springfive.airline.airlinebooking.domain.payment.RequestPayment.FlightInfo;
 import springfive.airline.airlinebooking.domain.repository.BookingRepository;
@@ -40,8 +42,15 @@ public class BookingService {
     this.paymentRequesterService = paymentRequesterService;
   }
 
-  public Flux<Booking> bookings(){
-    return this.bookingRepository.findAll();
+  public Mono<Booking> updatePayment(PaymentResponse paymentResponse){
+    final Payment payment = Payment.builder().id(paymentResponse.getId())
+        .transactionId(paymentResponse.getTransactionId())
+        .status(paymentResponse.getStatus()).value(paymentResponse.getValue()).build();
+
+    return this.bookingRepository.findById(paymentResponse.getBookingId()).flatMap(record ->{
+      record.setPayment(payment);
+      return this.bookingRepository.save(record);
+    });
   }
 
   public Flux<Booking> bookingsOfFlight(@NonNull String flightId){

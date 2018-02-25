@@ -9,4 +9,6 @@ public class Seat {
 
   Integer row;
 
+  Class category;
+
 }

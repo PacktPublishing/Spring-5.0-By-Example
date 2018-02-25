@@ -15,7 +15,7 @@ import springfive.airline.airlinefare.domain.FareQuery;
 import springfive.airline.airlinefare.domain.service.FareService;
 
 @RestController
-@RequestMapping("/fares")
+@RequestMapping("/")
 public class FareResource {
 
   private final FareService fareService;
@@ -27,7 +27,7 @@ public class FareResource {
   @PostMapping
   public Mono<ResponseEntity<Fare>> requestFare(@RequestBody FareQuery fareQuery,UriComponentsBuilder uriBuilder){
     return this.fareService.requestFare(fareQuery).map(data -> {
-      URI location = uriBuilder.path("/fares/{id}")
+      URI location = uriBuilder.path("/{id}")
           .buildAndExpand(data.getId())
           .toUri();
       return ResponseEntity.created(location).build();

@@ -48,9 +48,9 @@ public class BookingService {
       @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "800"),
       @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "10000")
   })
-  public Mono<Set<Booking>> bookingOfFlight(String bookingId) {
+  public Mono<Set<Booking>> bookingOfFlight(String flightId) {
     return discoveryService.serviceAddressFor(this.bookingService).next()
-        .flatMap(address -> Mono.just(this.webClient.mutate().baseUrl(address + "/" + bookingId).build().get()))
+        .flatMap(address -> Mono.just(this.webClient.mutate().baseUrl(address + "/flight/" + flightId).build().get()))
         .flatMap(requestHeadersUriSpec ->
             Flux.combineLatest(Flux.just(requestHeadersUriSpec),Flux.from(tokenService.token(this.credentials)),(reqSpec, token) ->{
               reqSpec.header("Authorization","Bearer" + token.getToken());

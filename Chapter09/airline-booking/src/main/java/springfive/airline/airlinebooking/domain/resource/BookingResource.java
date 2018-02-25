@@ -15,6 +15,7 @@ import reactor.core.publisher.Mono;
 import springfive.airline.airlinebooking.domain.Booking;
 import springfive.airline.airlinebooking.domain.resource.data.BookingRequest;
 import springfive.airline.airlinebooking.domain.service.BookingService;
+import springfive.airline.airlinebooking.domain.service.data.TotalBooked;
 
 @RestController
 @RequestMapping("/")
@@ -26,13 +27,18 @@ public class BookingResource {
     this.bookingService = bookingService;
   }
 
-  @GetMapping("/{flightId}/bookings")
+  @GetMapping("/flight/{flightId}")
   public Flux<Booking> bookingsOfFlight(@PathVariable("flightId")String flightId){
     return this.bookingService.bookingsOfFlight(flightId);
   }
 
+  @GetMapping("/{flightId}/total")
+  public Mono<TotalBooked> totalBooked(@PathVariable("flightId")String flightId){
+    return this.bookingService.totalBooked(flightId);
+  }
+
   @PostMapping
-  public Mono<ResponseEntity<Void>> newFlight(@Valid @RequestBody BookingRequest bookingRequest, UriComponentsBuilder uriBuilder){
+  public Mono<ResponseEntity<Void>> newBooking(@Valid @RequestBody BookingRequest bookingRequest, UriComponentsBuilder uriBuilder){
     return this.bookingService.newBooking(bookingRequest.getFareId()).map(data -> {
       URI location = uriBuilder.path("/bookings/{id}")
           .buildAndExpand(data.getId())

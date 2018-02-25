@@ -27,7 +27,7 @@ public class OccupationRule implements Rule<Plane> {
     Double total = 0d;
     for (Reservation reservation : reservations) {
       if (new FirstBand(this.bookings, reservation).isSatisfiedBy(plane)) {
-        total += 1d;
+        total += 0d;
       } else if (new SecondBand(this.bookings, reservation).isSatisfiedBy(plane)) {
         total += 10d;
       } else if (new ThirdBand(this.bookings, reservation).isSatisfiedBy(plane)) {

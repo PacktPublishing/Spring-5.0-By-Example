@@ -1,10 +1,12 @@
-package springfive.airline.airlinefare.domain;
+package springfive.airline.airlinefare.domain.flight;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Set;
 import lombok.Data;
+import springfive.airline.airlinefare.domain.Plane;
+import springfive.airline.airlinefare.domain.RegularPrice;
 
 @Data
 public class Flight {

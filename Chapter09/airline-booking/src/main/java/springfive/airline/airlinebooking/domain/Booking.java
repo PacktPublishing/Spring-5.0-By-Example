@@ -26,6 +26,8 @@ public class Booking {
 
   Fare fare;
 
+  Payment payment;
+
   public Long booked(){
     return Objects.isNull(seats) ? 0L : seats.size();
   }

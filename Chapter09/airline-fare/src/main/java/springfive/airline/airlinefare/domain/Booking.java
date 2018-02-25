@@ -2,6 +2,7 @@ package springfive.airline.airlinefare.domain;
 
 import java.util.Set;
 import lombok.Data;
+import springfive.airline.airlinefare.domain.flight.Flight;
 
 @Data
 public class Booking {

@@ -9,7 +9,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClient.RequestHeadersSpec;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import springfive.airline.airlinefare.domain.Flight;
+import springfive.airline.airlinefare.domain.flight.Flight;
 import springfive.airline.airlinefare.infra.oauth.Credentials;
 
 @Service
@@ -52,8 +52,9 @@ public class FlightService {
               reqSpec.header("Authorization","Bearer" + token.getToken());
               return reqSpec;
             })
-                .next())
+         .next())
         .map(RequestHeadersSpec::retrieve)
+        .doOnError(e -> {throw new RuntimeException("Invalid flight");})
         .flatMap(eq -> eq.bodyToMono(Flight.class));
   }
 

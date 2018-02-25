@@ -1,7 +1,7 @@
 package springfive.airline.airlinefare.domain.rules.spec.time;
 
 import java.time.LocalDateTime;
-import springfive.airline.airlinefare.domain.Flight;
+import springfive.airline.airlinefare.domain.flight.Flight;
 import springfive.airline.airlinefare.domain.specification.AbstractSpecification;
 
 public abstract class MonthsBeforeDeparture extends AbstractSpecification<Flight>{

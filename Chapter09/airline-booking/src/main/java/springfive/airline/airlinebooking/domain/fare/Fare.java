@@ -1,5 +1,7 @@
 package springfive.airline.airlinebooking.domain.fare;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import java.time.LocalDateTime;
 import java.util.Set;
 import lombok.AllArgsConstructor;
@@ -40,6 +42,7 @@ public class Fare {
   @Builder
   @NoArgsConstructor
   @AllArgsConstructor
+  @JsonInclude(Include.NON_NULL)
   public static class PlaneInfo{
 
     private String id;

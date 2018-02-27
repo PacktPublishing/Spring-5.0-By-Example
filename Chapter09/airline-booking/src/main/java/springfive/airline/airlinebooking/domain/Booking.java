@@ -1,5 +1,8 @@
 package springfive.airline.airlinebooking.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.Set;
@@ -17,6 +20,7 @@ import springfive.airline.airlinebooking.domain.fare.Reservation;
 @NoArgsConstructor
 @AllArgsConstructor
 @Document(collection = "bookings")
+@JsonInclude(Include.NON_NULL)
 public class Booking {
 
   @Id

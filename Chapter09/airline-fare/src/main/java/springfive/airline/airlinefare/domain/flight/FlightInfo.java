@@ -15,4 +15,16 @@ public class FlightInfo {
 
   private String number;
 
+  private PlaneInfo plane;
+
+  @Data
+  @Builder
+  @NoArgsConstructor
+  @AllArgsConstructor
+  public static class PlaneInfo{
+
+    private String id;
+
+  }
+
 }

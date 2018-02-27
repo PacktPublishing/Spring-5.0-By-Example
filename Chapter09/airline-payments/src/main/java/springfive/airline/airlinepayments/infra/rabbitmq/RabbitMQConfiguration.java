@@ -26,11 +26,11 @@ public class RabbitMQConfiguration {
 
   private final String paymentResponseKey;
 
-  public RabbitMQConfiguration(@Value("amqp.payments.queue.request") String paymentRequestQueue,
-                               @Value("amqp.payments.queue.response")String paymentResponseQueue,
-                               @Value("amqp.payments.exchange.payment")String paymentExchange,
-                               @Value("amqp.payments.key.request")String paymentRequestKey,
-                               @Value("amqp.payments.key.response")String paymentResponseKey){
+  public RabbitMQConfiguration(@Value("${amqp.payments.queue.request}") String paymentRequestQueue,
+                               @Value("${amqp.payments.queue.response}")String paymentResponseQueue,
+                               @Value("${amqp.payments.exchange.payment}")String paymentExchange,
+                               @Value("${amqp.payments.key.request}")String paymentRequestKey,
+                               @Value("${amqp.payments.key.response}")String paymentResponseKey){
     this.paymentRequestQueue = paymentRequestQueue;
     this.paymentResponseQueue = paymentResponseQueue;
     this.paymentExchange = paymentExchange;
@@ -74,8 +74,10 @@ public class RabbitMQConfiguration {
   }
 
   @Bean
-  public RabbitTemplate rabbitTemplate(ConnectionFactory factory){
-    return new RabbitTemplate(factory);
+  public RabbitTemplate rabbitTemplate(ConnectionFactory factory,Jackson2JsonMessageConverter messageConverter){
+    final RabbitTemplate rabbitTemplate = new RabbitTemplate(factory);
+    rabbitTemplate.setMessageConverter(messageConverter);
+    return rabbitTemplate;
   }
 
 }

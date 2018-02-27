@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.mongodb.core.mapping.Field;
 import springfive.airline.airlinebooking.domain.payment.PaymentStatus;
 
 @Data
@@ -13,6 +14,7 @@ import springfive.airline.airlinebooking.domain.payment.PaymentStatus;
 @AllArgsConstructor
 public class Payment {
 
+  @Field("payment_id")
   String id;
 
   String transactionId;

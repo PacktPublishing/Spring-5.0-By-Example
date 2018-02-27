@@ -2,10 +2,12 @@ package springfive.airline.airlinebooking.domain;
 
 import java.util.Set;
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
 public class Plane {
 
+  @Field("plane_id")
   String id;
 
   Set<Seat> seats;

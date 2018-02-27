@@ -17,8 +17,8 @@ public class PaymentResponseService {
 
   private final AsyncRabbitTemplate asyncRabbitTemplate;
 
-  public PaymentResponseService(@Value("amqp.payments.exchange.payment") String paymentExchange,
-                                 @Value("amqp.payments.key.response") String responsePaymentKey,
+  public PaymentResponseService(@Value("${amqp.payments.exchange.payment}") String paymentExchange,
+                                 @Value("${amqp.payments.key.response}") String responsePaymentKey,
                                  AsyncRabbitTemplate asyncRabbitTemplate) {
     this.paymentExchange = paymentExchange;
     this.responsePaymentKey = responsePaymentKey;

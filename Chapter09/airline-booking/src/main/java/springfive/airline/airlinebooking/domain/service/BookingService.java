@@ -79,7 +79,7 @@ public class BookingService {
                 .anyMatch(booking -> booking.getSeats().contains(reservation.getSeat()));
 
             final boolean seatAvailableOnPlane = plane.exist(reservation.getSeat());
-            if(seatAvailableOnPlane){
+            if(!seatAvailableOnPlane){
               throw SeatNotAvailableOnPlaneException.builder().flight(fare.getFlight()).plane(plane).seat(reservation.getSeat()).build();
             }
 
@@ -92,7 +92,7 @@ public class BookingService {
 
         }).flatMap(this.bookingRepository::save).flatMap(booking -> {
           final RequestPayment requestPayment = RequestPayment.builder().bookingId(booking.getId())
-              .createdAt(LocalDateTime.now().toString()).value(booking.getFare().getTotal())
+              .createdAt(LocalDateTime.now().toString()).value(booking.total())
               .flightInfo(
                   FlightInfo.builder().id(booking.getFlight().getId())
                       .number(booking.getFlight().getNumber()).build()).build();

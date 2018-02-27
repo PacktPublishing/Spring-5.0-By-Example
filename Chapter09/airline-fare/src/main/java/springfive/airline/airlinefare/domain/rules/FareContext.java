@@ -7,6 +7,7 @@ import springfive.airline.airlinefare.domain.flight.Flight;
 import springfive.airline.airlinefare.domain.Plane;
 import springfive.airline.airlinefare.domain.Reservation;
 import springfive.airline.airlinefare.domain.flight.FlightInfo;
+import springfive.airline.airlinefare.domain.flight.FlightInfo.PlaneInfo;
 
 @Value
 public class FareContext {
@@ -20,7 +21,8 @@ public class FareContext {
   Set<Reservation> reservations;
 
   public FlightInfo flightInfo(){
-    return FlightInfo.builder().id(this.flight.getId()).number(this.flight.getNumber()).build();
+    return FlightInfo.builder().id(this.flight.getId()).number(this.flight.getNumber()).plane(
+        PlaneInfo.builder().id(this.flight.getPlane().getId()).build()).build();
   }
 
 }

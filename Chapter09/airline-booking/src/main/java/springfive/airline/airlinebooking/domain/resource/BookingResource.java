@@ -3,6 +3,7 @@ package springfive.airline.airlinebooking.domain.resource;
 import java.net.URI;
 import javax.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,6 +36,11 @@ public class BookingResource {
   @GetMapping("/{flightId}/total")
   public Mono<TotalBooked> totalBooked(@PathVariable("flightId")String flightId){
     return this.bookingService.totalBooked(flightId);
+  }
+
+  @DeleteMapping("/{id}")
+  public Mono<ResponseEntity<Object>> cancel(@PathVariable("id")String id){
+    return this.bookingService.cancelBooking(id).map(el -> ResponseEntity.noContent().build()).defaultIfEmpty(ResponseEntity.notFound().build());
   }
 
   @PostMapping

@@ -65,6 +65,14 @@ public class BookingService {
         .flatMap(value -> Mono.just(TotalBooked.builder().total(value).build()));
   }
 
+  public Mono<Booking> byId(String id){
+    return this.bookingRepository.findById(id);
+  }
+
+  public Mono<Void> cancelBooking(String id){
+    return this.bookingRepository.deleteById(id);
+  }
+
   public Mono<Booking> newBooking(String fareId){
     return this.fareService.fare(fareId)
         .flatMap(fare -> Mono.zip(Mono.just(fare),this.planeService.plane(fare.getFlight().getPlane().getId()),this.bookingRepository.findByFlightId(fare.getFlight().getId()).collectList()))

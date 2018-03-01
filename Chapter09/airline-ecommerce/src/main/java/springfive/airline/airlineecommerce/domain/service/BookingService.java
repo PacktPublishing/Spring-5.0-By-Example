@@ -6,11 +6,15 @@ import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClient.RequestHeadersSpec;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import springfive.airline.airlineecommerce.domain.booking.TotalBooked;
+import springfive.airline.airlineecommerce.domain.passenger.Passenger;
+import springfive.airline.airlineecommerce.domain.resource.data.BookingRequest;
+import springfive.airline.airlineecommerce.domain.resource.data.PassengerRequest;
 import springfive.airline.airlineecommerce.infra.oauth.Credentials;
 
 @Service
@@ -35,17 +39,17 @@ public class BookingService {
     this.bookingsCredentials = bookingsCredentials;
   }
 
-  @HystrixCommand(commandKey = "create-bookings",groupKey = "ecommerce-operations",commandProperties = {
+  @HystrixCommand(commandKey = "buy-tickets",groupKey = "ecommerce-operations",commandProperties = {
       @HystrixProperty(name="circuitBreaker.requestVolumeThreshold",value="10"),
       @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "10"),
       @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds",value="10000"),
       @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "800"),
       @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "10000")
   })
-  public Mono<TotalBooked> totalBooked(@NonNull String flightId){
+  public Mono<Passenger> buyTicket(@NonNull BookingRequest bookingRequest){
     return discoveryService.serviceAddressFor(this.bookingsService).next()
         .flatMap(address -> Mono
-            .just(this.webClient.mutate().baseUrl(address + "/" + flightId +"/total").build().get()))
+            .just(this.webClient.mutate().baseUrl(address).build().post().body(BodyInserters.fromObject(bookingRequest))))
         .flatMap(requestHeadersUriSpec ->
             Flux.combineLatest(Flux.just(requestHeadersUriSpec),Flux.from(tokenService.token(this.bookingsCredentials)),(reqSpec, token) ->{
               reqSpec.header("Authorization","Bearer" + token.getToken());
@@ -53,7 +57,7 @@ public class BookingService {
             })
                 .next())
         .map(RequestHeadersSpec::retrieve)
-        .flatMap(res -> res.bodyToMono(TotalBooked.class));
+        .flatMap(res -> res.bodyToMono(Passenger.class));
   }
 
 }

@@ -1,0 +1,75 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Passengers Collection EDGE",
+		"_postman_id": "06dbb701-c9f3-2924-3239-ed89a5e9d0a4",
+		"description": "Planes API's",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All Passengers",
+			"request": {
+				"url": "http://localhost:8888/api/v1/passengers",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTkxNzMwOTMsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6IjM1Y2U1NjAzLTNlNTctNDM1OS1hNDU2LTZlNGU4Y2ZmMTBjMyIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.H4VibVlFfOaoU9v8PRs0mmjzIvpdT3VNyU8zW7cEAqhuBBoQyWipvnIp4rZgaR5tKKqB55dlnJY0FqMp103yALdEY2Em7xnlVJJaepSuGk0nLEua1zNR7JjFm5zOqc9AOmIM3mOP4NtZweDynexQDOTKix4e36rng1i6el460-E",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Passenger By ID",
+			"request": {
+				"url": "http://localhost:8888/api/v1/planes/5a8b6c81e0df8d1d1fe08e13",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Passenger By ID",
+			"request": {
+				"url": "http://localhost:8888/api/v1/planes/5a6339ec6798a67598fb2a35",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Passenger",
+			"request": {
+				"url": "http://localhost:8888/api/v1/passengers",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTkxNzMwOTMsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6IjM1Y2U1NjAzLTNlNTctNDM1OS1hNDU2LTZlNGU4Y2ZmMTBjMyIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.H4VibVlFfOaoU9v8PRs0mmjzIvpdT3VNyU8zW7cEAqhuBBoQyWipvnIp4rZgaR5tKKqB55dlnJY0FqMp103yALdEY2Em7xnlVJJaepSuGk0nLEua1zNR7JjFm5zOqc9AOmIM3mOP4NtZweDynexQDOTKix4e36rng1i6el460-E",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fidelity_number\" : \"AA-44\",\n\t\"name\" : \"Joe\",\n\t\"last_name\" : \"Doe\",\n\t\"born_date\" : \"02/12/1986\",\n\t\"address\" : {\n\t\t\"address_1\" : \"Brasil Avenue\",\n\t\t\"address_2\" : \"APTO 43 \",\n\t\t\"city\" : \"Campinas\",\n\t\t\"state\" : \"SP\",\n\t\t\"country\" : \"Brasil\"\n\t},\n\t\"contact\" : {\n\t\t\"email\" : \"joe.doe@joe.com\",\n\t\t\"phone_1\" : \"89-9999-3333\"\n\t},\n\t\"documents\":[{\n\t\t\"name\" : \"id\",\n\t\t\"value\" : \"111.222.333.44\"\n\t}]\n}"
+				},
+				"description": "A"
+			},
+			"response": []
+		}
+	]
+}

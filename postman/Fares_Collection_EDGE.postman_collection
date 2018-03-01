@@ -1,0 +1,58 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Fares Collection EDGE",
+		"_postman_id": "eea9724f-d043-90eb-d459-933eb31e9c9c",
+		"description": "Planes API's",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Fare Query",
+			"request": {
+				"url": "http://localhost:8888/api/v1/fares",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTk5NDczNjIsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6IjU5ODQ1NDMwLTMwZGItNGIyMC04OWEwLTk5Yjg5MDI5N2JmMSIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.UDB7ygTid0CZoJal7A1Co-W-xPm1WSj0lfxpNwosqtHh-eVgu7-p1XVF5gvZacl9B_jdvzveqHBMhtV1_Ej5M9cF5Y6gVtWOmty5RHaY1pRNt1e0OA_njkOQ_qL0lA127pHwdAeEOm3SdQbNjg7_FGOAqjZtTuT0Xq-Y8HooAoE",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"mainPassenger\":{\n\t\t\"id\" : \"\",\n\t\t\"name\" : \"Joe Doe\",\n\t\t\"email\" : \"joe@doe.com\",\n\t\t\"fidelityNumber\" : \"AA-45\",\n\t\t\"document\" : {\n\t\t\t\"name\" : \"socialID\",\n\t\t\t\"value\" : \"SID-888888888\"\n\t\t}\n\t},\n\t\"reservations\":[\n\t\t{ \n\t\t\t\"passenger\" : {\n\t\t\t\t\"id\" : \"\",\n\t\t\t\t\"name\" : \"Joe Doe\",\n\t\t\t\t\"email\" : \"joe@doe.com\",\n\t\t\t\t\"fidelityNumber\" : \"AA-45\",\n\t\t\t\t\"document\" : {\n\t\t\t\t\t\"name\" : \"socialID\",\n\t\t\t\t\t\"value\" : \"SID-888888888\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t\"seat\":{\n\t\t\t\t\"identity\" : \"1A\",\n\t\t\t\t\"row\" : 1,\n\t\t\t\t\"category\" : {\n\t\t\t\t\t\"id\" : \"A\",\n\t\t\t\t\t\"name\": \"First Class\"\n\t\t\t\t}\n\t\t\t},\n\t\t\t\"price\" : 1000\n\t\t\n\t}],\n\t\"flight\" : {\n\t\t\"id\" : \"5a973d26ef4ae304c87e11d5\"\n\t}\n\n}"
+				},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Fare By ID",
+			"request": {
+				"url": "http://localhost:8888/api/v1/fares/d128536a-984c-4ac4-a3ae-83d1d2dcf9cd",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTk5NDczNjIsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6IjU5ODQ1NDMwLTMwZGItNGIyMC04OWEwLTk5Yjg5MDI5N2JmMSIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.UDB7ygTid0CZoJal7A1Co-W-xPm1WSj0lfxpNwosqtHh-eVgu7-p1XVF5gvZacl9B_jdvzveqHBMhtV1_Ej5M9cF5Y6gVtWOmty5RHaY1pRNt1e0OA_njkOQ_qL0lA127pHwdAeEOm3SdQbNjg7_FGOAqjZtTuT0Xq-Y8HooAoE",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "A"
+			},
+			"response": []
+		}
+	]
+}

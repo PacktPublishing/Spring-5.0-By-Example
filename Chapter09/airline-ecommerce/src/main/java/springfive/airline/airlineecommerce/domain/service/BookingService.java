@@ -6,14 +6,11 @@ import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClient.RequestHeadersSpec;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import springfive.airline.airlineecommerce.domain.FlightSearch;
 import springfive.airline.airlineecommerce.domain.booking.TotalBooked;
-import springfive.airline.airlineecommerce.domain.flight.Flight;
 import springfive.airline.airlineecommerce.infra.oauth.Credentials;
 
 @Service
@@ -38,7 +35,7 @@ public class BookingService {
     this.bookingsCredentials = bookingsCredentials;
   }
 
-  @HystrixCommand(commandKey = "bookings-total",groupKey = "airline-bookings-total",commandProperties = {
+  @HystrixCommand(commandKey = "create-bookings",groupKey = "ecommerce-operations",commandProperties = {
       @HystrixProperty(name="circuitBreaker.requestVolumeThreshold",value="10"),
       @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "10"),
       @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds",value="10000"),

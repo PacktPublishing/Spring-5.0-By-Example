@@ -15,14 +15,22 @@ public class CredentialsProducer {
 
   private final String bookingsClientSecret;
 
+  private final String passengersClientId;
+
+  private final String passengersClientSecret;
+
   public CredentialsProducer(@Value("${flights.oauth.client_id}") String flightsClientId,
-                             @Value("${flights.oauth.client_secret}")String flightsClientSecret,
-                             @Value("${bookings.oauth.client_id}")String bookingsClientId,
-                             @Value("${bookings.oauth.client_secret}")String bookingsClientSecret) {
+      @Value("${flights.oauth.client_secret}") String flightsClientSecret,
+      @Value("${bookings.oauth.client_id}") String bookingsClientId,
+      @Value("${bookings.oauth.client_secret}") String bookingsClientSecret,
+      @Value("${passengers.oauth.client_id}")String passengersClientId,
+      @Value("${passengers.oauth.client_secret}") String passengersClientSecret) {
     this.flightsClientId = flightsClientId;
     this.flightsClientSecret = flightsClientSecret;
     this.bookingsClientId = bookingsClientId;
     this.bookingsClientSecret = bookingsClientSecret;
+    this.passengersClientId = passengersClientId;
+    this.passengersClientSecret = passengersClientSecret;
   }
 
 
@@ -34,6 +42,11 @@ public class CredentialsProducer {
   @Bean("bookingsCredentials")
   public Credentials bookings(){
     return Credentials.builder().clientId(this.bookingsClientId).clientSecret(this.bookingsClientSecret).build();
+  }
+
+  @Bean("passengersCredentials")
+  public Credentials passengers(){
+    return Credentials.builder().clientId(this.passengersClientId).clientSecret(this.passengersClientSecret).build();
   }
 
 }

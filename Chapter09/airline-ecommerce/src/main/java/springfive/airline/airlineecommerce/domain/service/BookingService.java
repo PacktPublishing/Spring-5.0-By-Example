@@ -43,7 +43,7 @@ public class BookingService {
       @HystrixProperty(name="circuitBreaker.requestVolumeThreshold",value="10"),
       @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "10"),
       @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds",value="10000"),
-      @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "800"),
+      @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000"),
       @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "10000")
   })
   public Mono<Passenger> buyTicket(@NonNull BookingRequest bookingRequest){

@@ -85,7 +85,9 @@ zuul:
       path: /api/v1/ecommerce/**
       sensitiveHeaders:
       serviceId: ecommerce
-
+  host:
+    connectTimeoutMillis: 3000
+    socketTimeoutMillis: 3000
 proxy:
   auth:
     routes:

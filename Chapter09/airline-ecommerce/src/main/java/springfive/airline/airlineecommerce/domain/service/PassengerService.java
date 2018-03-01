@@ -48,20 +48,13 @@ public class PassengerService {
       @HystrixProperty(name="circuitBreaker.requestVolumeThreshold",value="10"),
       @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "10"),
       @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds",value="10000"),
-      @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "800"),
+      @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "3000"),
       @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "10000")
   })
   public Mono<Passenger> newPassenger(@NonNull PassengerRequest passengerRequest){
-
-    final Passenger passenger = Passenger.builder().address(passengerRequest.getAddress())
-        .bornDate(passengerRequest.getBornDate()).contact(passengerRequest.getContact())
-        .documents(passengerRequest.getDocuments()).lastName(passengerRequest.getLastName())
-        .name(passengerRequest.getName()).fidelityNumber(passengerRequest.getFidelityNumber())
-        .build();
-
     return discoveryService.serviceAddressFor(this.passengersService).next()
         .flatMap(address -> Mono
-            .just(this.webClient.mutate().baseUrl(address).build().post().body(BodyInserters.fromObject(passenger))))
+            .just(this.webClient.mutate().baseUrl(address).build().post().body(BodyInserters.fromObject(passengerRequest))))
         .flatMap(requestHeadersUriSpec ->
             Flux.combineLatest(Flux.just(requestHeadersUriSpec),Flux.from(tokenService.token(this.passengersCredentials)),(reqSpec, token) ->{
               reqSpec.header("Authorization","Bearer" + token.getToken());

@@ -13,7 +13,7 @@ import springfive.airline.airlineecommerce.domain.resource.data.BookingRequest;
 import springfive.airline.airlineecommerce.domain.service.BookingService;
 
 @RestController
-@RequestMapping("/ecommerce")
+@RequestMapping("/")
 public class BuyTicketResource {
 
   private final BookingService bookingService;

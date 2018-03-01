@@ -13,7 +13,7 @@ import springfive.airline.airlineecommerce.domain.resource.data.PassengerRequest
 import springfive.airline.airlineecommerce.domain.service.PassengerService;
 
 @RestController
-@RequestMapping("/ecommerce")
+@RequestMapping("/")
 public class PassengerResource {
 
   private final PassengerService passengerService;

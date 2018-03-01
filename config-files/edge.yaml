@@ -81,6 +81,10 @@ zuul:
       path: /api/v1/bookings/**
       sensitiveHeaders:
       serviceId: bookings
+    ecommerce:
+      path: /api/v1/ecommerce/**
+      sensitiveHeaders:
+      serviceId: ecommerce
 
 proxy:
   auth:

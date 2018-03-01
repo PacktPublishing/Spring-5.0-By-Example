@@ -10,9 +10,7 @@ import lombok.NoArgsConstructor;
 import springfive.airline.airlineecommerce.domain.resource.data.PassengerRequest;
 
 @Data
-@Builder
 @NoArgsConstructor
-@AllArgsConstructor
 public class Passenger {
 
   private static final transient DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("MM/dd/yyyy");

@@ -1,0 +1,138 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Bookings Collection EDGE",
+		"_postman_id": "f69ebe4a-0b32-f4dd-8ae4-bcaa0ee6e327",
+		"description": "Planes API's",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All Bookings",
+			"request": {
+				"url": "http://localhost:8888/api/v1/planes",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTc2MTQ4NDQsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6IjkwYTUyNTYzLTBhOTAtNGE5OC1hNTg5LWE5YTg1NmE3NWU2ZSIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.XTmcpwLo9WSYuWyaRRrbRKXB1wTSbUyOV_97h08sBzfoNYxx8LwWzh_dKf-5lW9psuOnZHXqBJWJd0t_Ue8tW3Pq2sKtJrS0p3JCywU8eron-dMP_Ay_oH_uTUC_Dd0TVdZXY1HqdX8tQFPS3Yn1xrWdcNkZPXeWoaAXzfpU2us",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Bookings by Flight",
+			"request": {
+				"url": "http://localhost:8888/api/v1/bookings/5a8b6d3fe0df8d1dadd608b6/bookings",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTkxNzgyNTYsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6Ijg0MTlkOGU2LWI3MjctNDg1Zi1iMGQ1LTNjNzhiYzZkN2Q3NiIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.AOUbhDXUxkQ9nRy5Dm4ApzNtgv_Baa0AjQTVL7g5kbUURpHQukzR2pSa7RTL7FpMcOka_pp1RkFlwU7yNoQOCPPAQ7TKLcQ_dXYChDLPjT1c0tL-8i-cM4VS2fX1ZhwQT0w5jjI62mRTJFbUGoKPcu6VgogU8Dgg1Mp_2UziVnA",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Total Booked by Flight",
+			"request": {
+				"url": "http://localhost:8888/api/v1/bookings/5a8b6d3fe0df8d1dadd608b6/total",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTk1NjY5MDUsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6ImNhYWExNzIwLTA2ZTAtNGFlNS04YWUxLTZhNGYwNTkwZDIxNyIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.b0hM9KvPpUIFf7AGKVgbV10YI8wJx5tm_GqhFs8PCqqRvenAgLxJRs-5nwuwMv3jlRHy4mRq5D1wOjbHMSOOZ0zUeoJNquE7FwMlxudE3FvBLx9BZK95VlI5l8Gj7WQ68z3zbmNXzeKyMFSvC9B3Fq-oFiSD5hoRXhrBeDAoo-4",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Bookings of Of Flight",
+			"request": {
+				"url": "http://localhost:8888/api/v1/bookings/flight/5a8b6d3fe0df8d1dadd608b6",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTk1NjY5MDUsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6ImNhYWExNzIwLTA2ZTAtNGFlNS04YWUxLTZhNGYwNTkwZDIxNyIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.b0hM9KvPpUIFf7AGKVgbV10YI8wJx5tm_GqhFs8PCqqRvenAgLxJRs-5nwuwMv3jlRHy4mRq5D1wOjbHMSOOZ0zUeoJNquE7FwMlxudE3FvBLx9BZK95VlI5l8Gj7WQ68z3zbmNXzeKyMFSvC9B3Fq-oFiSD5hoRXhrBeDAoo-4",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Boarding Pass",
+			"request": {
+				"url": "http://localhost:8888/api/v1/bookings/5a94bce0b5c8eb1e050b0480/boarding-pass",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTk3NzU4MjUsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6Ijc1YmQ0OTlhLTVhOWMtNDEwZS1iMjNiLTFjMjFjOWE3NjIwNSIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.V03cWlV0G0MkZix2M01l6NMPjCxsjqUJQvM4MnBu5m4in50xeYwTDC9FKARW-G1550nAHQN2ihgrmbnPkm4-tA2za32eu-q_-W3NuvA4SxHxocD_3Xs-UGdKih1Gpt2fIym64QWvi7-hA9ZgliMd0khpJ7glwvKAwF1Zu4AojZk",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Booking By ID",
+			"request": {
+				"url": "http://localhost:8888/api/v1/bookings/5a94b44bb5c8eb18e0109eba",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTk3NzU4MjUsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6Ijc1YmQ0OTlhLTVhOWMtNDEwZS1iMjNiLTFjMjFjOWE3NjIwNSIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.V03cWlV0G0MkZix2M01l6NMPjCxsjqUJQvM4MnBu5m4in50xeYwTDC9FKARW-G1550nAHQN2ihgrmbnPkm4-tA2za32eu-q_-W3NuvA4SxHxocD_3Xs-UGdKih1Gpt2fIym64QWvi7-hA9ZgliMd0khpJ7glwvKAwF1Zu4AojZk",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Booking",
+			"request": {
+				"url": "http://localhost:8888/api/v1/bookings",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTk5NDczNjIsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6IjU5ODQ1NDMwLTMwZGItNGIyMC04OWEwLTk5Yjg5MDI5N2JmMSIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.UDB7ygTid0CZoJal7A1Co-W-xPm1WSj0lfxpNwosqtHh-eVgu7-p1XVF5gvZacl9B_jdvzveqHBMhtV1_Ej5M9cF5Y6gVtWOmty5RHaY1pRNt1e0OA_njkOQ_qL0lA127pHwdAeEOm3SdQbNjg7_FGOAqjZtTuT0Xq-Y8HooAoE",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fareId\" : \"d128536a-984c-4ac4-a3ae-83d1d2dcf9cd\"\t\n}"
+				},
+				"description": "A"
+			},
+			"response": []
+		}
+	]
+}

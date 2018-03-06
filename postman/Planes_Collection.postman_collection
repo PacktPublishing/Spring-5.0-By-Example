@@ -1,0 +1,75 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Planes Collection",
+		"_postman_id": "5ba1c896-6288-2e18-156f-5295181a6258",
+		"description": "Planes API's",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All Planes",
+			"request": {
+				"url": "http://localhost:8888/api/v1/planes",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTc2MTQ4NDQsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6IjkwYTUyNTYzLTBhOTAtNGE5OC1hNTg5LWE5YTg1NmE3NWU2ZSIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.XTmcpwLo9WSYuWyaRRrbRKXB1wTSbUyOV_97h08sBzfoNYxx8LwWzh_dKf-5lW9psuOnZHXqBJWJd0t_Ue8tW3Pq2sKtJrS0p3JCywU8eron-dMP_Ay_oH_uTUC_Dd0TVdZXY1HqdX8tQFPS3Yn1xrWdcNkZPXeWoaAXzfpU2us",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Plane By ID",
+			"request": {
+				"url": "http://localhost:50001/planes/5a633a556798a675a9e671a5",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Plane By ID",
+			"request": {
+				"url": "http://localhost:50001/planes/5a6339ec6798a67598fb2a35",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Plane",
+			"request": {
+				"url": "http://localhost:50001/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTc2MTQ4NDQsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6IjkwYTUyNTYzLTBhOTAtNGE5OC1hNTg5LWE5YTg1NmE3NWU2ZSIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.XTmcpwLo9WSYuWyaRRrbRKXB1wTSbUyOV_97h08sBzfoNYxx8LwWzh_dKf-5lW9psuOnZHXqBJWJd0t_Ue8tW3Pq2sKtJrS0p3JCywU8eron-dMP_Ay_oH_uTUC_Dd0TVdZXY1HqdX8tQFPS3Yn1xrWdcNkZPXeWoaAXzfpU2us",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"owner\" : \"Spring Framework Company\",\n\t\"model\" : {\n\t\t\"factory\" : \"Pivotal\",\n\t\t\"model\" : \"5.0\",\n\t\t\"name\" : \"Spring 5.0\",\n\t\t\"reference_name\" : \"S5.0\"\n\t},\n\t\"seats\" : [\n\t\t{\n\t\t\t\"identity\" : \"1A\",\n\t\t\t\"row\" : \"1\",\n\t\t\t\"right_side\" : { \"seat_identity\" : \"2A\"},\n\t\t\t\"category\" : {\n\t\t\t\t\"id\" : \"A\",\n\t\t\t\t\"name\": \"First Class\"\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"identity\" : \"2A\",\n\t\t\t\"row\" : \"1\",\n\t\t\t\"left_side\" : { \"seat_identity\" : \"1A\"},\n\t\t\t\"category\" : {\n\t\t\t\t\"id\" : \"A\",\n\t\t\t\t\"name\": \"First Class\"\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"identity\" : \"3A\",\n\t\t\t\"row\" : \"1\",\n\t\t\t\"left_side\" :{ \"seat_identity\" : \"2A\"},\n\t\t\t\"category\" : {\n\t\t\t\t\"id\" : \"A\",\n\t\t\t\t\"name\": \"First Class\"\n\t\t\t}\n\t\t}\n\t\t],\n\t\"notes\": \"The best company airplane\"\n}"
+				},
+				"description": "A"
+			},
+			"response": []
+		}
+	]
+}

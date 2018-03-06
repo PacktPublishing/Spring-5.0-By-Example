@@ -80,6 +80,10 @@ zuul:
       path: /api/v1/bookings/**
       sensitiveHeaders:
       serviceId: bookings
+    ecommerce:
+      path: /api/v1/ecommerce/**
+      sensitiveHeaders:
+      serviceId: ecommerce
 
 proxy:
   auth:
@@ -88,3 +92,6 @@ proxy:
       flighst: oauth2
       fares: oauth2
       bookings: oauth2
+      payments: oauth2
+      passengers: oauth2
+      ecommerce: oauth2

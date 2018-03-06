@@ -1,0 +1,116 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Flights Collection EDGE",
+		"_postman_id": "bcc4beb2-b278-8289-33f5-0020873fcfdb",
+		"description": "Planes API's",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "All Flights",
+			"request": {
+				"url": "http://localhost:8888/api/v1/flights",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTk5NDczNjIsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6IjU5ODQ1NDMwLTMwZGItNGIyMC04OWEwLTk5Yjg5MDI5N2JmMSIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.UDB7ygTid0CZoJal7A1Co-W-xPm1WSj0lfxpNwosqtHh-eVgu7-p1XVF5gvZacl9B_jdvzveqHBMhtV1_Ej5M9cF5Y6gVtWOmty5RHaY1pRNt1e0OA_njkOQ_qL0lA127pHwdAeEOm3SdQbNjg7_FGOAqjZtTuT0Xq-Y8HooAoE",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Flight By ID",
+			"request": {
+				"url": "http://localhost:8888/api/v1/flights/5a919b62c3c05526d9cd36cf",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTk1NzQ5MjMsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6IjFjYzhiMzYyLTA3YzktNDM0ZC04ODJjLTM5YzZiNWI4ZWZhYyIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.jOpVVpDAWnhBNPMLPaZeU5XlFVI7AULo2mmEF_bCRg-kMW5hERbzeggIzxvhdROtmLss7Y4uyZdBtbTaOTVPwrCWvji8SyL55DbzPviqD6CJr7BMrzV4IboxnWlo_blMqGZXL8dHkIJ6amoXyvx0fCIQX3zX-NlGpnI0AgW_45w",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Flight By ID",
+			"request": {
+				"url": "http://localhost:8888/api/v1/flights/5a63550b6798a67a5282f47f",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Flight",
+			"request": {
+				"url": "http://localhost:8888/api/v1/flights",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTk5NDczNjIsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6IjU5ODQ1NDMwLTMwZGItNGIyMC04OWEwLTk5Yjg5MDI5N2JmMSIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.UDB7ygTid0CZoJal7A1Co-W-xPm1WSj0lfxpNwosqtHh-eVgu7-p1XVF5gvZacl9B_jdvzveqHBMhtV1_Ej5M9cF5Y6gVtWOmty5RHaY1pRNt1e0OA_njkOQ_qL0lA127pHwdAeEOm3SdQbNjg7_FGOAqjZtTuT0Xq-Y8HooAoE",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"from\":{\n\t\t\"name\":\"Viracopos International Airport\",\n\t\t\"code\":\"VCP\",\n\t\t\"city\":\"Campinas\",\n\t\t\"country\":\"Brazil\"\n\t},\n\t\"to\":{\n\t\t\"name\":\"Gov. André Franco Montoro International Airport (Cumbica)\",\n\t\t\"code\":\"GRU\",\n\t\t\"city\":\"Sao Paulo\",\n\t\t\"country\":\"Brazil\"\n\t},\n\t\"departure_at\":\"2018-07-08 08:00\",\n\t\"arrive_at\":\"2018-07-08 09:00\",\n\t\"plane_id\":\"5a973cf4ef4ae304b2b26097\",\n\t\"prices\" :[\n\t\t{\n\t\t\t\"target_class\": {\"id\":\"A\" },\n\t\t\t\"price\" : 4000\n\t\t},\n\t\t{\n\t\t\t\"target_class\": {\"id\":\"B\" },\n\t\t\t\"price\" : 3000\n\t\t},\n\t\t\t{\n\t\t\t\"target_class\": {\"id\":\"C\" },\n\t\t\t\"price\" : 2000\n\t\t},\n\t\t\t{\n\t\t\t\"target_class\": {\"id\":\"D\" },\n\t\t\t\"price\" : 1000\n\t\t}\n\t\t]\n}"
+				},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Flight Query",
+			"request": {
+				"url": "http://localhost:8888/api/v1/flights/query",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTk5NDczNjIsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6IjU5ODQ1NDMwLTMwZGItNGIyMC04OWEwLTk5Yjg5MDI5N2JmMSIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.UDB7ygTid0CZoJal7A1Co-W-xPm1WSj0lfxpNwosqtHh-eVgu7-p1XVF5gvZacl9B_jdvzveqHBMhtV1_Ej5M9cF5Y6gVtWOmty5RHaY1pRNt1e0OA_njkOQ_qL0lA127pHwdAeEOm3SdQbNjg7_FGOAqjZtTuT0Xq-Y8HooAoE",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"from\":\"VCP\",\n\t\"to\":\"GRU\",\n\t\"departureAt\":\"2018-08-08 07:00:00\",\n\t\"arriveAt\":\"2018-08-08 23:59:27\"\n}"
+				},
+				"description": "A"
+			},
+			"response": []
+		}
+	]
+}

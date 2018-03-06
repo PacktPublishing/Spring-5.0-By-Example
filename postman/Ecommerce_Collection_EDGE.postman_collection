@@ -1,0 +1,86 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Ecommerce Collection EDGE",
+		"_postman_id": "6dc635ec-b3c0-5741-2e66-8b1c45ea9e2b",
+		"description": "Planes API's",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Buy Tickets",
+			"request": {
+				"url": "http://localhost:8888/api/v1/ecommerce/tickets",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTk5NDczNjIsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6IjU5ODQ1NDMwLTMwZGItNGIyMC04OWEwLTk5Yjg5MDI5N2JmMSIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.UDB7ygTid0CZoJal7A1Co-W-xPm1WSj0lfxpNwosqtHh-eVgu7-p1XVF5gvZacl9B_jdvzveqHBMhtV1_Ej5M9cF5Y6gVtWOmty5RHaY1pRNt1e0OA_njkOQ_qL0lA127pHwdAeEOm3SdQbNjg7_FGOAqjZtTuT0Xq-Y8HooAoE",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fareId\" : \"d128536a-984c-4ac4-a3ae-83d1d2dcf9cd\"\t\n}"
+				},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Flight Search",
+			"request": {
+				"url": "http://localhost:8888/api/v1/ecommerce/query",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTk5NDczNjIsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6IjU5ODQ1NDMwLTMwZGItNGIyMC04OWEwLTk5Yjg5MDI5N2JmMSIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.UDB7ygTid0CZoJal7A1Co-W-xPm1WSj0lfxpNwosqtHh-eVgu7-p1XVF5gvZacl9B_jdvzveqHBMhtV1_Ej5M9cF5Y6gVtWOmty5RHaY1pRNt1e0OA_njkOQ_qL0lA127pHwdAeEOm3SdQbNjg7_FGOAqjZtTuT0Xq-Y8HooAoE",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"from\":\"VCP\",\n\t\"to\":\"GRU\",\n\t\"departureAt\":\"2018-08-08 07:00:00\",\n\t\"arriveAt\":\"2018-08-08 23:59:27\"\n}"
+				},
+				"description": "A"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Passenger",
+			"request": {
+				"url": "http://localhost:8888/api/v1/ecommerce/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJ0cnVzdCJdLCJleHAiOjE1MTk5NDczNjIsImF1dGhvcml0aWVzIjpbIm9wZXJhdG9yIl0sImp0aSI6IjU5ODQ1NDMwLTMwZGItNGIyMC04OWEwLTk5Yjg5MDI5N2JmMSIsImNsaWVudF9pZCI6IjQ0MmNmNDAxNTUwOWVkYTljMDNlNWNhM2FjZWVmNzUyIn0.UDB7ygTid0CZoJal7A1Co-W-xPm1WSj0lfxpNwosqtHh-eVgu7-p1XVF5gvZacl9B_jdvzveqHBMhtV1_Ej5M9cF5Y6gVtWOmty5RHaY1pRNt1e0OA_njkOQ_qL0lA127pHwdAeEOm3SdQbNjg7_FGOAqjZtTuT0Xq-Y8HooAoE",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"fidelity_number\" : \"AA-44\",\n\t\"name\" : \"Joe\",\n\t\"last_name\" : \"Doe\",\n\t\"born_date\" : \"02/12/1986\",\n\t\"address\" : {\n\t\t\"address_1\" : \"Brasil Avenue\",\n\t\t\"address_2\" : \"APTO 43 \",\n\t\t\"city\" : \"Campinas\",\n\t\t\"state\" : \"SP\",\n\t\t\"country\" : \"Brasil\"\n\t},\n\t\"contact\" : {\n\t\t\"email\" : \"joe.doe@joe.com\",\n\t\t\"phone_1\" : \"89-9999-3333\"\n\t},\n\t\"documents\":[{\n\t\t\"name\" : \"id\",\n\t\t\"value\" : \"111.222.333.44\"\n\t}]\n}"
+				},
+				"description": "A"
+			},
+			"response": []
+		}
+	]
+}

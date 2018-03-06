@@ -17,9 +17,10 @@ public class PaymentRequesterService {
 
   private final AsyncRabbitTemplate asyncRabbitTemplate;
 
-  public PaymentRequesterService(@Value("amqp.payments.exchange.payment") String paymentExchange,
-                                 @Value("amqp.payments.key.request") String requestPaymentKey,
-                                 AsyncRabbitTemplate asyncRabbitTemplate) {
+
+  public PaymentRequesterService(@Value("${amqp.payments.exchange.payment}") String paymentExchange,
+      @Value("${amqp.payments.key.request}") String requestPaymentKey,
+      AsyncRabbitTemplate asyncRabbitTemplate) {
     this.paymentExchange = paymentExchange;
     this.requestPaymentKey = requestPaymentKey;
     this.asyncRabbitTemplate = asyncRabbitTemplate;

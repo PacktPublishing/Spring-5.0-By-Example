@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import springfive.airline.airlinebooking.domain.Booking;
+import springfive.airline.airlinebooking.domain.Flight;
 import springfive.airline.airlinebooking.domain.Payment;
 import springfive.airline.airlinebooking.domain.Plane;
 import springfive.airline.airlinebooking.domain.exception.AlreadyBookedException;
@@ -32,14 +33,18 @@ public class BookingService {
 
   private final PaymentRequesterService paymentRequesterService;
 
+  private final FlightService flightService;
+
   public BookingService(BookingRepository bookingRepository,
       FareService fareService,
       PlaneService planeService,
-      PaymentRequesterService paymentRequesterService) {
+      PaymentRequesterService paymentRequesterService,
+      FlightService flightService) {
     this.bookingRepository = bookingRepository;
     this.fareService = fareService;
     this.planeService = planeService;
     this.paymentRequesterService = paymentRequesterService;
+    this.flightService = flightService;
   }
 
   public Mono<Booking> updatePayment(PaymentResponse paymentResponse){
@@ -65,13 +70,22 @@ public class BookingService {
         .flatMap(value -> Mono.just(TotalBooked.builder().total(value).build()));
   }
 
+  public Mono<Booking> byId(String id){
+    return this.bookingRepository.findById(id);
+  }
+
+  public Mono<Void> cancelBooking(String id){
+    return this.bookingRepository.deleteById(id);
+  }
+
   public Mono<Booking> newBooking(String fareId){
     return this.fareService.fare(fareId)
-        .flatMap(fare -> Mono.zip(Mono.just(fare),this.planeService.plane(fare.getFlight().getPlane().getId()),this.bookingRepository.findByFlightId(fare.getFlight().getId()).collectList()))
+        .flatMap(fare -> Mono.zip(Mono.just(fare),this.planeService.plane(fare.getFlight().getPlane().getId()),this.bookingRepository.findByFlightId(fare.getFlight().getId()).collectList(),this.flightService.flight(fare.getFlight().getId())))
         .flatMap(data ->{
           final Fare fare = data.getT1();
           final Plane plane = data.getT2();
           final List<Booking> bookings = data.getT3();
+          final Flight flight = data.getT4();
 
           fare.getReservations().forEach(reservation -> {
 
@@ -79,7 +93,7 @@ public class BookingService {
                 .anyMatch(booking -> booking.getSeats().contains(reservation.getSeat()));
 
             final boolean seatAvailableOnPlane = plane.exist(reservation.getSeat());
-            if(seatAvailableOnPlane){
+            if(!seatAvailableOnPlane){
               throw SeatNotAvailableOnPlaneException.builder().flight(fare.getFlight()).plane(plane).seat(reservation.getSeat()).build();
             }
 
@@ -88,11 +102,11 @@ public class BookingService {
             }
           });
 
-          return Mono.just(Booking.builder().seats(fare.getReservations().stream().map(Reservation::getSeat).collect(toSet())).flight(fare.getFlight()).fare(fare).build());
+          return Mono.just(Booking.builder().seats(fare.getReservations().stream().map(Reservation::getSeat).collect(toSet())).flight(flight).fare(fare).build());
 
         }).flatMap(this.bookingRepository::save).flatMap(booking -> {
           final RequestPayment requestPayment = RequestPayment.builder().bookingId(booking.getId())
-              .createdAt(LocalDateTime.now().toString()).value(booking.getFare().getTotal())
+              .createdAt(LocalDateTime.now().toString()).value(booking.total())
               .flightInfo(
                   FlightInfo.builder().id(booking.getFlight().getId())
                       .number(booking.getFlight().getNumber()).build()).build();

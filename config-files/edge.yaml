@@ -81,7 +81,13 @@ zuul:
       path: /api/v1/bookings/**
       sensitiveHeaders:
       serviceId: bookings
-
+    ecommerce:
+      path: /api/v1/ecommerce/**
+      sensitiveHeaders:
+      serviceId: ecommerce
+  host:
+    connectTimeoutMillis: 3000
+    socketTimeoutMillis: 3000
 proxy:
   auth:
     routes:
@@ -89,3 +95,6 @@ proxy:
       flighst: oauth2
       fares: oauth2
       bookings: oauth2
+      payments: oauth2
+      passengers: oauth2
+      ecommerce: oauth2

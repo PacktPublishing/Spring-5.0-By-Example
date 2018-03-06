@@ -2,6 +2,8 @@ package springfive.airline.airlinefare.domain.repository;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
+import java.time.Duration;
+import java.time.temporal.TemporalUnit;
 import lombok.SneakyThrows;
 import org.springframework.data.redis.core.ReactiveRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -24,7 +26,7 @@ public class FareRepository {
   @SneakyThrows
   public Mono<Fare> create(Fare fare) {
     return this.reactiveRedisTemplate.opsForValue()
-        .set("fare-" + fare.getId(), this.mapper.writeValueAsString(fare)).flatMap(el ->
+        .set("fare-" + fare.getId(), this.mapper.writeValueAsString(fare), Duration.ofMinutes(15)).flatMap(el ->
             Mono.just(fare)
         );
   }

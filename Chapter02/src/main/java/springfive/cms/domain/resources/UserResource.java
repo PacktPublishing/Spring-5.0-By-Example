@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import springfive.cms.domain.models.User;
 import springfive.cms.domain.vo.NewsRequest;
+import springfive.cms.domain.vo.UserRequest;
 
 /**
  * @author claudioed on 29/10/17. Project cms
@@ -33,7 +34,7 @@ public class UserResource {
   }
 
   @PostMapping
-  public ResponseEntity<User> newUser(NewsRequest news){
+  public ResponseEntity<User> newUser(UserRequest userRequest){
     return new ResponseEntity<>(new User(), HttpStatus.CREATED);
   }
 
@@ -43,7 +44,7 @@ public class UserResource {
   }
 
   @PutMapping("/{id}")
-  public ResponseEntity<User> updateUser(@PathVariable("id") String id,NewsRequest news){
+  public ResponseEntity<User> updateUser(@PathVariable("id") String id,User userRequest){
     return new ResponseEntity<>(new User(), HttpStatus.OK);
   }
 

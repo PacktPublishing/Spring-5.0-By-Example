@@ -32,7 +32,7 @@ software/dependencies:
 * Docker CE
 * pgAdmin
 * Docker Compose
-You will be assisted with installation processes,etc through this book.
+You will be assisted with installation processes, and so on through this book.
 
 ## Related Products
 * [Mastering Spring 5.0](https://www.packtpub.com/application-development/mastering-spring-50?utm_source=github&utm_medium=repository&utm_campaign=9781787123175)
@@ -41,5 +41,4 @@ You will be assisted with installation processes,etc through this book.
 
 * [Spring 5.0 Cookbook](https://www.packtpub.com/application-development/spring-50-cookbook?utm_source=github&utm_medium=repository&utm_campaign=9781787128316)
 
-### Suggestions and Feedback
-[Click here](https://docs.google.com/forms/d/e/1FAIpQLSe5qwunkGf6PUvzPirPDtuy1Du5Rlzew23UBp2S-P3wB-GcwQ/viewform) if you have any feedback or suggestions.
+

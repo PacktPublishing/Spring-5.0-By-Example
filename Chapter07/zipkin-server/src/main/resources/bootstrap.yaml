@@ -10,7 +10,7 @@ spring:
 spring:
   profiles: docker
   application:
-    name: discovery
+    name: zipkin
   cloud:
     config:
       uri: http://config:5000
